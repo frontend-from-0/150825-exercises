@@ -1,0 +1,72 @@
+/* External CSS - you must link this file to HTML file using link HTML element */
+
+header {
+  padding: 40px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  color: hotpink;
+
+  display: flex;
+  gap: 40px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* :hover is a pseudo selector */
+a:hover {
+  /* color setting would be applied to the selected element and all it's children elements */
+  color: rgb(196, 23, 110);
+}
+
+h1 {
+  /* text-align setting would be applied to the selected element and all it's children elements */
+  text-align: center;
+}
+
+div {
+  background-color: rgb(250, 254, 255);
+  max-width: 600px;
+
+  padding: 20px;
+  /* Margin: auto is used to center the element horisontally on the page. */
+  margin: auto;
+}
+
+p {
+  text-align: justify;
+}
+
+.link {
+  font-weight: 700;
+  font-style: italic;
+}
+
+.link:hover {
+  color: rgb(7, 117, 160);
+}
+
+.link-accent {
+  font-weight: 700;
+  color: hotpink;
+}
+
+.link-accent:hover {
+  color: rgb(196, 23, 110);
+}
+
+.text-small {
+  font-size: 12px;
+}
+
+
+footer {
+  text-align: center;
+  padding: 20px 40px;
+}
