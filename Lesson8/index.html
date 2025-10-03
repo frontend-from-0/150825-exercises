@@ -14,5 +14,60 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <nav class="side-nav">
+      <a href="">Appname</a>
+      <ul class="nav-list">
+        <li>
+          <a class="nav-link" href="">
+            <span><img src="./assets/icons/check.svg" alt="" /></span>
+            <span>Add New Task</span>
+          </a>
+        </li>
+        <li><a class="nav-link" href="">Teams</a></li>
+        <li><a class="nav-link" href="">Members</a></li>
+      </ul>
+    </nav>
+    <main>
+      <div class="page-heading">
+        <h1>Teams</h1>
+        <a href="">New Team</a>
+      </div>
+
+      <form>
+        <input
+          type="text"
+          placeholder="Search teams"
+          aria-label="Search teams"
+          name="search"
+        />
+      </form>
+
+      <div class="table">
+          <div class="table-header">Team Name</div>
+          <div class="table-header">Members</div>
+          <div class="table-header">Tasks Completed</div>
+          <div class="table-header">Actions</div>
+          
+          <div class="row-border"></div>
+
+          <div class="table-cell">Team Alpha</div>
+          <div class="table-cell" >5</div>
+          <div class="table-cell progress-cell">
+            <div class="progress-bar">
+              <div class="progress-bar-indicator"></div>
+            </div>
+            <span>75</span>
+            
+          </div>
+          <a href="#" class="table-cell">Edit</a>
+
+          <div class="row-border"></div>
+
+
+      
+      </div>
+
+      
+    </main>
   </body>
 </html>
