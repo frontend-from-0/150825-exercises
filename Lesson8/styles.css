@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-text-primary: #f9fafb;
+  --color-bg-dark: #111827;
+  --color-bg-light: #374151;
+  --color-text-secondary: #9ca3af;
+  --color-accent: #0284c7;
+  --border-radius: 12px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0 auto;
+  color: var(--color-text-primary);
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1 {
+  color: var(--color-text-primary);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 150%;
+}
