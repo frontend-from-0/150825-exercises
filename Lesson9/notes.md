@@ -3,5 +3,5 @@
 - Adjust white space according to the screen size
 - Adjust font sizes according to the screen size
 - Use correct image/video sizes for the screen
-- Interactive elements shoul be at least 48px, and there should be enough white space around them
+- Interactive elements should be at least 48px, and there should be enough white space around them
 - Use Media query rules to adjust styles based on the device size 

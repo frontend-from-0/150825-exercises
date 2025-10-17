@@ -20,5 +20,68 @@ a {
   display: inline-block;
 }
 
+picture, img {
+  max-width: 100%;
+}
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
+nav {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.nav__list {
+  display: none;
+}
+
+.btn--hamburger {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+@media all and (min-width: 640px) and (max-width: 1023.98px) {
+  nav {
+    flex-direction: row;
+  }
+
+  .nav__auth {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+  }
+}
+
+@media all and (min-width: 1024px) {
+  nav {
+    flex-direction: row;
+  }
+
+  .nav__list {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav__auth {
+    gap: 16px;
+  }
+
+  .nav__menu {
+    gap: 64px;
+  }
+
+  .btn--hamburger{
+    display: none;
+  }
+}
