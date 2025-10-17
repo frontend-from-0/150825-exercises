@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --Primary: #5d50c6;
+  --Base: #fff;
+  --Secondary: #f85e9f;
+  --max-content: 1184px;
+}
+
+body {
+  margin: 0;
+  padding: 0 16px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+}
+
+
+
