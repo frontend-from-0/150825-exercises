@@ -6,13 +6,11 @@ body {
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6, p:hover {
-  cursor: pointer;
-}
+
 
 .header {
-  background-color: #eae4e4;
-  color: #888;
+  background-color: #704d4d;
+  color: #ffffff;
   padding: 1em;
   text-align: center;
 }
@@ -23,6 +21,7 @@ h1, h2, h3, h4, h5, h6, p:hover {
   display: flex;
   justify-content: center;
 }
+
 
 .main {
   padding: 2em;
@@ -42,7 +41,7 @@ h1, h2, h3, h4, h5, h6, p:hover {
 
 .header__title {
   margin: 0;
-  font-size: 32px;
+  font-size: 2em;
 }
 
 .nav__list {
@@ -56,16 +55,14 @@ h1, h2, h3, h4, h5, h6, p:hover {
   display: flex;
 }
 
-.nav__item:first-of-type {
-  order:4;
-}
-.nav__item:last-of-type {
-  order:-1;
-}
 
 .nav__link {
   text-decoration: none;
-  color: #888;
+  color: #ffffff;
+}
+
+.nav__link:hover {
+  color: rgba(255, 255, 255, 0.8) ;
 }
 
 .product__image {
@@ -81,7 +78,6 @@ h1, h2, h3, h4, h5, h6, p:hover {
 .product__description {
   margin: 0 0 1em;
 }
-
 
 .contact-form {
   background-color: #f5f5f5;
@@ -101,6 +97,10 @@ h1, h2, h3, h4, h5, h6, p:hover {
   margin-top: 1em;
 }
 
+.contact-form__form > .button {
+  margin-top: 30px;
+}
+
 .contact-form__label {
   display: block;
   margin-bottom: 0.5em;
@@ -118,20 +118,26 @@ h1, h2, h3, h4, h5, h6, p:hover {
 
 .contact-form__input:focus-visible,
 .contact-form__textarea:focus-visible {
-  border: 1px solid #ddd;
+  border: 2px solid #704d4d;
   outline: none !important;
 }
 
 .button {
-  background-color: #eae4e4;
+  background-color: #704d4d;
   color: #fff;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   display: inline-block;
-  padding: 5px;
+  padding: 8px 16px;
+  min-width: 48px;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #614343;
 }
 
 .text--small {
-  font-size: 10px;
+  font-size: 0.75em;
 }
