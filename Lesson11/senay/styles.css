@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    text-align: center;
+    background-color: black;
+}
+
+.message {
+    font-size: 30px;
+    color: gold;
+    margin-top: 100px;
+
+}
