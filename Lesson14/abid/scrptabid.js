@@ -51,10 +51,11 @@ console.log('Ex.6', greeting.toUpperCase(), greeting);
 
 // 7. Concatenate "Hello" and "World" with a space in between and log the result.
 // CODE HERE
-
+console.log("Ex.7", "Hello" + " " + "World");
 // 8. Check the type of a variable, e.g., let x = 42. Log the type using typeof.
 // CODE HERE
-
+let x8 = 42;
+console.log(typeof x8);
 // 9. Convert the number 100 to a string and log the result.
 // CODE HERE
 
