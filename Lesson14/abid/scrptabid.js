@@ -140,7 +140,7 @@ console.log('Ex17', sum);
 const dividend= 10;
 const divisor= 3;
 const divisionResult = dividend / divisor;
-const differenceResult = dividend % divisor;
+const differenceResult = dividend - divisor;
 console.log('Ex18', divisionResult);
 console.log('Ex18-1', differenceResult);
 
