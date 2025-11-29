@@ -200,7 +200,7 @@ console.log('Ex26-2', numberEx26 + 1 * 2); // -3 + 1 * 2
 
 // 27. Declare a=2 and b=3. Increment a using the prefix ++ operator, then add b to the result and log it.
 // CODE HERE
-let a27 = 2;
+const a27 = 2;
 const b27 = 3;
 console.log('Ex27', (++a27) + b27);
 
