@@ -107,14 +107,23 @@ console.log(step1, step2, step3, step4);
 // 12. Round the number 3.7 down using Math.floor and 3.2 up using Math.ceil, log both.
 // CODE HERE
 
+const downInteger = Math.floor(3.7);
+const upInteger = Math.ceil(3.2);
+
+console.log('Ex.12', downInteger, upInteger);
+
 // 13. Declare a boolean variable isStudent = true. Log it.
 // CODE HERE
+
+const isStudent = true;
+
+console.log('Ex.13', isStudent);
 
 // 14. Initialize counter = 0, then increment it by 1 using counter++ and log it.
 // CODE HERE
 let index = 0;
 
-console.log('Ex14', index++); // 0
+console.log('Ex.14', index++); // 0
 console.log(index); // 1
 
 // 15. Initialize points = 10, add 5 to it using points += 5, then log points.
@@ -128,26 +137,81 @@ console.log('Ex15', points);
 // 16. Declare name="Alice", age=30, city="Paris". Log "Alice (30) lives in Paris" using template literals.
 // CODE HERE
 
+const name = "Alice";
+const age = 30;
+const city = "Paris"
+
+
+console.log('Ex.16', `${name} (${age}) lives in ${city}`);
+
+
 // 17. Declare variables x=5, y=10, z=15. Log their total sum.
 // CODE HERE
+
+const x = 5;
+const y = 10;
+const z = 15;
+
+console.log ('Ex.17', `Sum is ${x + y + z}.`  );
+
 
 // 18. Declare dividend=10 and divisor=3. Log the quotient (divisionResult) and difference (differenceResult).
 // CODE HERE
 
+const dividend = 10;
+const divisor = 3;
+
+console.log ('Ex.18', `Division result is ${dividend / divisor}. Difference result is ${dividend - divisor}.`);
+
 // 19. Declare firstName and lastName. Create fullName by concatenating them with a space and log it.
 // CODE HERE
+
+const firstName = "Brad";
+const lastName = "Pitt";
+const fullName = firstName + " " + lastName;
+
+console.log ('Ex.19', fullName);
+
 
 // 20. Declare firstFactor=7 and secondFactor=2. Log the product.
 // CODE HERE
 
+const firstFactor = 7;
+const secondFactor = 2;
+
+console.log ('Ex.20', firstFactor * secondFactor);
+
+
 // 21. Log the value of Math.PI.
 // CODE HERE
+
+let x = Math.PI;
+
+console.log ('Ex.21', x);
 
 // 22. Declare counter=0. Increment it using three different methods (e.g., counter++, counter+=1, counter=counter+1) and log the result each time.
 // CODE HERE
 
+let counter = 0;
+
+counter++;
+console.log ('Ex.22', counter);
+
+counter += 1;
+console.log (counter);
+
+counter = counter + 1;
+console.log (counter);
+
+
 // 23. Declare initialTemperature=20. Increase it by 5 and log the result.
 // CODE HERE
+
+let initialTemperature = 20;
+initialTemperature += 5;
+
+console.log ('Ex.23', initialTemperature);
+
 
 // 24. Declare numberEx9=6. Increment it using the prefix ++ operator and log both the variable and the incremented value.
 // CODE HERE
@@ -155,6 +219,11 @@ let numberEx9 = 6;
 console.log('Ex.24', ++numberEx9);
 // 25. Declare numberEx10=8. Increment it using the postfix ++ operator and log both the original variable and the incremented value.
 // CODE HERE
+
+let numberEx10 = 8;
+
+console.log ('Ex.25', numberEx10, numberEx10++);
+
 
 // 26. Declare numberEx11=-3. Increment it by 1 using prefix ++, then multiply the result by 2 and log the final value.
 // CODE HERE
@@ -167,3 +236,9 @@ console.log(numberEx26 + 1 * 2); // -3 + 1 * 2
 
 // 27. Declare a=2 and b=3. Increment a using the prefix ++ operator, then add b to the result and log it.
 // CODE HERE
+
+let a = 2;
+let b = 3;
+
+console.log ('Ex.27', ++a + b);
+
