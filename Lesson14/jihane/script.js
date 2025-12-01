@@ -319,7 +319,7 @@ console.log(numberEx26 + 1 * 2); // -3 + 1 * 2
 
 
 // 27. Declare a=2 and b=3. Increment a using the prefix ++ operator, then add b to the result and log it.
-// CODE HERE.   DONE
+// CODE HERE.   DONE.
 
 let variableA = 2;
 let variableB = 3;
