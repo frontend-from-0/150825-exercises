@@ -161,7 +161,7 @@ console.log("Total sum is" ,sumOfVariables);
 const dividend = 10;
 const divisor = 3;
 
-let divisionResult = dividend / divisor;
+const divisionResult = dividend / divisor;
 let differenceResult = dividend % divisor;
 
 console.log('Ex.18', "The quotient is:", divisionResult , "and", "the difference is:", differenceResult);
