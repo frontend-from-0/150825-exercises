@@ -159,7 +159,7 @@ console.log("Total sum is" ,sumOfVariables);
 // CODE HERE
 
 const dividend = 10;
-let divisor = 3;
+const divisor = 3;
 
 let divisionResult = dividend / divisor;
 let differenceResult = dividend % divisor;
