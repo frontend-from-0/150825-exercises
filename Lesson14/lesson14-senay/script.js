@@ -158,7 +158,7 @@ console.log("Total sum is" ,sumOfVariables);
 // 18. Declare dividend=10 and divisor=3. Log the quotient (divisionResult) and difference (differenceResult).
 // CODE HERE
 
-let dividend = 10;
+const dividend = 10;
 let divisor = 3;
 
 let divisionResult = dividend / divisor;
