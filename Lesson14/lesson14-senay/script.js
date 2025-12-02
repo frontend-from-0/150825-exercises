@@ -142,7 +142,7 @@ console.log('Ex15', points);
 // CODE HERE
 const name = "Alice";
 let age = 30;
-let city = "Paris";
+const city = "Paris";
 console.log('Ex.16',`${name} (${age}) lives in ${city}`);
 
 // 17. Declare variables x=5, y=10, z=15. Log their total sum.
