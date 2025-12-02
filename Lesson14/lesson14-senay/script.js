@@ -140,7 +140,7 @@ console.log('Ex15', points);
 
 // 16. Declare name="Alice", age=30, city="Paris". Log "Alice (30) lives in Paris" using template literals.
 // CODE HERE
-let name = "Alice";
+const name = "Alice";
 let age = 30;
 let city = "Paris";
 console.log('Ex.16',`${name} (${age}) lives in ${city}`);
