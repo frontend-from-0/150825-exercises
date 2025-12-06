@@ -564,7 +564,26 @@ console.log("-------");
 */
 console.log("Ex. 23");
 
+function getInitials(fullName) {
+  const splitedWords = fullName.split(" "); //["JOHN", "DOE"];
+
+  const initials = splitedWords
+    .filter((name) => name.length > 0)
+    .map(function (name) {
+      return name.charAt(0).toUpperCase();
+    });
+
+  const getInitialName = initials.join(".") + ".";
+
+  console.log(getInitialName);
+
+  return getInitialName;
+}
+
+getInitials("Senay Adanir");
+
 console.log("-------");
+
 /*
 24. Switch: Month to Season
    - Define a function `getSeason(monthNum)` (1-12). Use switch or if-else:
@@ -576,7 +595,42 @@ console.log("-------");
 */
 console.log("Ex. 24");
 
+function getSeason(monthNum) {
+  let text = "";
+  switch (monthNum) {
+    case 12:
+    case 1:
+    case 2:
+      text = "Winter";
+      break;
+    case 3:
+    case 4:
+    case 5:
+      text = "Spring";
+      break;
+    case 6:
+    case 7:
+    case 8:
+      text = "Summer";
+      break;
+    case 9:
+    case 10:
+    case 11:
+      text = "Autumn";
+      break;
+    default:
+      text = "Invalid month";
+  }
+  console.log(text);
+}
+
+getSeason(3);
+getSeason(12);
+getSeason(7);
+getSeason(24);
+
 console.log("-------");
+
 /*
 25. Check If String Contains Number
    - Define a function `containsNumber(str)` that uses a loop or a method like
@@ -585,6 +639,47 @@ console.log("-------");
 */
 
 console.log("Ex. 25");
+
+function containsNumber(str) {
+  const hasDigit = [...str].some((char) => {
+    return !isNaN(char) && char !== " ";
+  });
+
+  if (hasDigit) {
+    console.log("Contains number");
+  } else {
+    console.log("No number found");
+  }
+}
+
+containsNumber("hello123world");
+containsNumber("hello world");
+
+function containsNumber1(str) {
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+
+    if (!isNaN(char) && char !== " ") {
+      console.log("Contains number");
+      return;
+    }
+  }
+
+  console.log("No number found");
+}
+
+containsNumber1("abc_xyz");
+containsNumber1("abc_123xyz");
+
+function containsNumber_Match(str) {
+  if (str.match(/\d/)) {
+    console.log("Contains number");
+  } else {
+    console.log("No number found");
+  }
+}
+
+containsNumber_Match("abc456xyz");
 
 console.log("-------");
 /*
@@ -595,6 +690,19 @@ console.log("-------");
 */
 console.log("Ex. 26");
 
+function padString(str, maxLength) {
+  if (str.length < maxLength) {
+    const padedStr = str.padEnd(maxLength, "*");
+    console.log(padedStr);
+    return;
+  } else {
+    console.log(str);
+  }
+}
+
+padString("examp", 10);
+padString("hello", 7);
+
 console.log("-------");
 /*
 27. If-Else: Voting Eligibility
@@ -604,6 +712,24 @@ console.log("-------");
 */
 
 console.log("Ex. 27");
+
+function canVote(age) {
+  if (typeof age === "number" && Number.isFinite(age)) {
+    //Number.isFinite(age)
+    if (age >= 18) {
+      console.log("Can vote");
+    } else {
+      console.log("Too young to vote");
+    }
+  } else {
+    console.log("Invalid input");
+  }
+}
+
+canVote(15);
+canVote(21);
+canVote("String");
+canVote("21");
 
 console.log("-------");
 /*
@@ -616,6 +742,31 @@ console.log("-------");
 */
 console.log("Ex. 28");
 
+function reverseWords(sentence) {
+  const splitedWords = sentence.split(" ");
+  const words = splitedWords.map((word) => {
+    return word.split("").reverse().join("");
+  });
+
+  const reverseSentence = words.join(" ");
+
+  console.log(reverseSentence);
+}
+reverseWords("This is an example sentence");
+
+function reverseWordsWithLoop(sentence) {
+  const words = sentence.split(" ");
+  const reversedWordArray = [];
+
+  for (let i = 0; i < words.length; i++) {
+    const reverseWord = words[i].split("").reverse().join("");
+    reversedWordArray.push(reverseWord);
+  }
+  reversedSentence = reversedWordArray.join(" ");
+  console.log(reversedSentence);
+}
+reverseWordsWithLoop("This is an example sentence");
+
 console.log("-------");
 /*
 29. Check Substring Position
@@ -626,7 +777,25 @@ console.log("-------");
 
 console.log("Ex. 29");
 
+function findWordPosition(sentence, word) {
+  const wordIndex = sentence.indexOf(word);
+  return wordIndex;
+}
+const sentence = "Learning of Javascript is a lot of fun!";
+const word = "Javascript";
+
+findWordPosition(sentence, word);
+
+const indexResult = findWordPosition(sentence, word);
+
+if (indexResult !== -1) {
+  console.log(`The word ${word} begins at index ${indexResult}.`);
+} else {
+  console.log("Not found");
+}
+
 console.log("-------");
+
 /*
 30. Switch: Simple Calculator
    - Define a function `calculate(a, operator, b)` that uses switch to handle:
@@ -638,5 +807,35 @@ console.log("-------");
    - Log the result.
 */
 console.log("Ex. 30");
+
+function calculate(a, operator, b) {
+  let result;
+  switch (operator) {
+    case "+":
+      result = a + b;
+      break;
+    case "-":
+      result = a - b;
+      break;
+    case "*":
+      result = a * b;
+      break;
+    case "/":
+      if (b === 0) {
+        console.log("You cannot divide by zero");
+      } else {
+        result = a / b;
+      }
+      break;
+    default:
+      result = "Invalid operator";
+  }
+  console.log(result);
+}
+calculate(10, "+", 5);
+calculate(10, "-", 5);
+calculate(10, "*", 5);
+calculate(10, "/", 5);
+calculate(10, "%", 5);
 
 console.log("-------");
