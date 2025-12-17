@@ -362,7 +362,8 @@ console.log('Ex.20');
 function sumDigits(str) {
   let sum = 0;
   for (const char of str) {
-    if(!isNaN(parseInt(char))) {
+    const maybeNumber = parseInt(char);
+    if(!isNaN(maybeNumber)) {
       sum += maybeNumber;
     }
   }
