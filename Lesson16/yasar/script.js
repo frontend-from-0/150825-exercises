@@ -556,7 +556,7 @@ function manageQueue(queue, newPerson) {
 const people = ["Alice", "Bob"];
 manageQueue(people, "Charlie");
 
-/*
+/*w
 26. To-Do List Application 
   - Define a function `updateTodoList(todoList, startIndex, deleteCount, ...newTasks)`:
    - Logs the current list of tasks.
