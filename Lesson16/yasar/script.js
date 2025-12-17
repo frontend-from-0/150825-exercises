@@ -94,7 +94,18 @@ console.log('-------');
    - Log the final sum.
 */
 console.log('Ex.4')
+function sumRange(start, end) {
+  let sum = 0;      
+  let current = start; 
 
+  while (current <= end) { 
+    sum += current;  
+    current++;       
+  }
+
+  console.log(sum); 
+}
+sumRange(4, 8);
 
 /*
 5. Reverse an Array
@@ -122,6 +133,21 @@ reverseArray(['apple', 'banana', true]);
      an array of numbers and creates a new array without any negative values.
    - Log the new array.
 */
+console.log("Ex.6")
+
+function filterNegative(numbers) {
+let positiveNumbers = [];
+
+ for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] >= 0) {
+      positiveNumbers.push(numbers[i]);
+    }
+  }
+  console.log(positiveNumbers);
+ }
+
+filterNegative([114, -4, 3, -123])
+
 
 /*
 7. Double the Values (For-of Loop)
@@ -144,6 +170,14 @@ doubleValues([38, 25, 77, 81]);
    - Define a function `printCharacters(str)` that uses a for-of loop
      to log each character in the string on a separate line.
 */
+console.log("Ex.8")
+
+function printCharacters(str) {
+  for (let char of str) { 
+    console.log(char);
+  }
+}
+printCharacters("Everyday");
 
 /*
 9. Sum All Values in an Object
@@ -152,6 +186,28 @@ doubleValues([38, 25, 77, 81]);
    - Log the sum.
    - Example: {a: 10, b: 20, c: 5} -> 35
 */
+
+console.log("Ex.9")
+function sumObjectValues(obj){
+let sum = 0;
+
+for(let key in obj){
+let value = obj[key];
+
+if (typeof value === 'number') {
+      sum += value; 
+    }
+
+}
+console.log(sum);
+
+}
+const pays={
+  "cars repair":200,
+  electric:123,
+  holiday:"12 april",
+}
+sumObjectValues(pays);
 
 /*
 10. Print Keys of an Object (For-in)
@@ -175,6 +231,24 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
       to sum all numbers in the array.
     - Log the total.
 */
+console.log("Ex.11")
+
+function sumWithDoWhile(numbers) {
+  if (numbers.length === 0) {
+    console.log(0);
+    return;
+  }
+  let sum = 0; 
+  let i = 0;  
+  do {
+    sum += numbers[i]; 
+    i++; 
+  } while (i < numbers.length);
+
+  console.log(sum);
+}
+
+sumWithDoWhile([98, 12, 4,]);
 
 /*
 12. Remove Duplicates from an Array
@@ -183,6 +257,21 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
     - Hint: you could check if the item is already in the new array before pushing.
     - Log the new array without duplicates.
 */
+console.log("Ex.12")
+
+function removeDuplicates(arr) {
+
+  let uniqueArray = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    let currentItem = arr[i]; 
+    if (!uniqueArray.includes(currentItem)) {
+      uniqueArray.push(currentItem);
+    } 
+  }
+  console.log(uniqueArray);
+}
+removeDuplicates(["computer","developer","computer","jack"]);
 
 /*
 13. Calculate Factorial (For Loop)
@@ -191,6 +280,17 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
     - Log the result. 
     - Example: factorial(5) -> 120
 */
+console.log("Ex.13")
+
+function factorial(n){
+
+  let result = 1;
+  for (let i = 1; i <= n; i++) {
+    result = result * i;
+}
+console.log(result);
+}
+factorial(7);
 
 /*
 14. String -> Array -> String
@@ -199,6 +299,15 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
       a string. Use loops or built-in methods as you like.
     - Log the reversed sentence.
 */
+console.log("Ex.14")
+
+function reverseWords(sentence){
+
+const result = sentence.split(' ').reverse().join(' ');
+console.log(result);
+}
+reverseWords("Code 2 Career is really good");
+
 
 /*
 15. Filter Words Longer Than X
@@ -206,12 +315,38 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
       to collect only the words that have a length >= minLength.
     - Log the resulting array.
 */
+console.log("Ex.15")
 
+function filterLongWords(words, minLength) {
+  let result = [];
+  for (let i = 0; i < words.length; i++) {
+    
+    let word = words[i];
+    if (word.length >= minLength) {
+    
+      result.push(word);
+    }
+  }
+  console.log(result);
+}
+
+filterLongWords(["house", "pen", "table", "computer", "boot"], 4);
 /*
 16. Log Array Elements with Their Indices
     - Define a function `logElementsWithIndex(arr)` that loops through the array
       and logs "Index: i, Value: arr[i]" for each element.
 */
+console.log("Ex.16")
+
+function logElementsWithIndex(arr){
+  for (let i = 0; i < arr.length; i++) {
+
+    console.log(`Index: ${i}, Value: ${arr[i]}`);
+  
+  }
+}
+
+logElementsWithIndex(["Amsterdam","New Jersey","Germany"]);
 
 /*
 17. Find the Smallest Number in an Array
@@ -219,6 +354,23 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
       to find and return the smallest number.
     - Log the smallest number.
 */
+console.log("Ex.17")
+function findMin(numbers){
+  if (numbers.length === 0) return;
+
+  let min = numbers [0];
+  for(let i = 1; i <numbers.length; i++) {
+
+    if (numbers[i] < min) {
+      min = numbers[i];
+    }
+  }
+
+return min;
+}
+
+let minnumber = findMin ([10, 23, 2, 3]);
+console.log("minimumnumber:",minnumber);
 
 /*
 18. Count Occurrences of a Word in an Array
@@ -226,6 +378,21 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
       to count how many times `word` appears.
     - Log the count.
 */
+console.log("Ex.18")
+function countOccurrences(arr, word){
+
+let count = 0;
+for (let i = 0; i < arr.length; i++)
+
+ if(arr [i] === word ){
+count++;
+
+  }
+console.log(count);
+
+}
+const colors = ["pink", "red", "green", "red", "yellow", "red"];
+countOccurrences(colors, "red");
 
 /*
 19. Remove Falsy Values
@@ -233,6 +400,24 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
       and returns a new array without falsy values (false, 0, "", null, undefined, NaN).
     - Log the new array.
 */
+console.log("Ex.19")
+function removeFalsyValues(arr) {
+
+  let cleanArray = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    let currentValue = arr[i];
+
+    if (currentValue) {
+      cleanArray.push(currentValue);
+    }
+  }
+
+  console.log(cleanArray);
+  return cleanArray;
+}
+
+removeFalsyValues([0, "goodnight", false, 55, "",undefined, true, false, null]);
 
 /*
 20. Sum of All Digits in a String
@@ -241,6 +426,20 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
     - Log the final sum.
     - Example: "abc123" -> 6
 */
+console.log("Ex.20")
+function sumDigits(str){
+  let sum = 0;
+
+  for(let i = 0; i < str.length; i++){
+    let char = str[i];
+    let value = parseInt(char);
+    if (!isNaN(value)) {
+      sum += value;
+      }
+  }
+  console.log(sum);
+}
+sumDigits("aps29x7");
 
 /*
 21. Average of Array Elements
@@ -248,6 +447,23 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
       to calculate the average (sum / length).
     - Log the average.
 */
+console.log("Ex.21")
+
+function averageArray(numbers) {
+  if (numbers.length === 0) {
+    console.log(0);
+    return;
+  }
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i]; 
+  }
+  const average = sum / numbers.length;
+
+  console.log(average);
+}
+
+averageArray([10, 20, 30]);
 
 /*
 22. Flatten a 2D Array (Nested Loops)
@@ -255,6 +471,20 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
       (e.g., [[1,2],[3,4]]) and uses nested loops to create a new one-dimensional array.
     - Log the flattened array.
 */
+console.log("Ex.22")
+function flattenArray(twoDArray) {
+  let flatList = [];
+  for (let i = 0; i < twoDArray.length; i++) {
+    
+    let subArray = twoDArray[i]; 
+    for (let j = 0; j < subArray.length; j++) {
+      flatList.push(subArray[j]);
+    }
+  }
+  console.log(flatList);
+}
+
+flattenArray([[1, 2], [3, 4], [5, 6]]);
 
 /*
 23. Find Words Containing a Letter
@@ -263,6 +493,21 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
       the given letter.
     - Log the filtered array.
 */
+console.log("Ex.23")
+function findWordsWithLetter(words, letter) {
+  let result = [];
+  for (let i = 0; i < words.length; i++) {
+    
+    let currentWord = words[i]; 
+    if (currentWord.includes(letter)) {
+      
+      result.push(currentWord);
+    }
+  }
+  console.log(result);
+  return result;
+}
+findWordsWithLetter(["mouse", "computer", "users", "tablet", "telephone"], "u");
 
 /*
 24. Push and Pop Operations
@@ -273,6 +518,21 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
       - logs the popped element
       - logs the final array
 */
+console.log("Ex.24")
+function pushPopExample(arr, itemToPush) {
+  
+  arr.push(itemToPush);
+  console.log("Array after push:", arr);
+  const poppedItem = arr.pop();
+
+  console.log("Popped element:", poppedItem);
+
+
+  console.log("Final array:", arr);
+}
+
+const fruits = ["Apple", "Pear"];
+pushPopExample(fruits, "Banana");
 
 /*
 25. Push and Shift Operations
@@ -283,6 +543,18 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
       - logs the removed person
       - logs the final queue
 */
+console.log("Ex.25")
+function manageQueue(queue, newPerson) {
+  queue.push(newPerson);
+  console.log("Queue after push:", queue);
+
+  const removedPerson = queue.shift();
+
+  console.log("Removed person:", removedPerson);
+  console.log("Final queue:", queue);
+}
+const people = ["Alice", "Bob"];
+manageQueue(people, "Charlie");
 
 /*
 26. To-Do List Application 
@@ -292,5 +564,16 @@ printObjectKeys({ name: 'yasar', age: 27, city: 'mersin' });
    - Inserts any new tasks at the end of the array.
    - Logs the updated list.
 */
+console.log("Ex.26")
+function updateTodoList(todoList, startIndex, deleteCount, ...newTasks) {
+  
+  console.log("Old list", todoList);   
 
+  todoList.splice(startIndex, deleteCount);
+  todoList.push(...newTasks);
+  
+  console.log("NewList", todoList);
+}
 const todoList = ['Study JS', 'Eat breakfast', 'Walk dog'];
+updateTodoList(todoList, 1, 1, 'Go Gym', 'Sleep');
+
