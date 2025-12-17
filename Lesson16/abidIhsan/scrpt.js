@@ -363,7 +363,7 @@ function sumDigits(str) {
   let sum = 0;
   for (const char of str) {
     if(!isNaN(parseInt(char))) {
-      sum += parseInt(char);
+      sum += maybeNumber;
     }
   }
   console.log(sum);
