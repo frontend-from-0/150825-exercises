@@ -179,7 +179,7 @@ printCharacters("Hello");
 console.log('Ex. 9');
 function sumObjectValues(obj) {
   let sum = 0;
-  for (let key in obj) {
+  for (const key in obj) {
     if (typeof obj[key] == 'number') {
       sum += obj[key];
     }
@@ -294,7 +294,7 @@ filterLongWords("Hey, what is going on over there?".split(" "), 4);
 console.log('Ex. 16');
 function logElementsWithIndex(arr) {
   for (let i = 0; i < arr.length; i++) {
-    console.log("Index: i, Value: arr[i]");
+    console.log(`Index: ${i}, Value: ${arr[i]}`);
   }
 }
 logElementsWithIndex(["Ball", "moon", "Star"]);
@@ -415,7 +415,7 @@ console.log('Ex. 23');
 function findWordsWithLetter(words, letter) {
   const matches = [];
   for (let word of words) {
-    if (word.includes()) {
+    if (word.includes(letter)) {
       matches.push(word);
     }
   }
@@ -472,7 +472,8 @@ manageQueue(["Go","back","left"], "right");
 console.log('Ex. 26');
 function updateTodoList(todoList, startIndex, deleteCount, ...newTasks) {
   console.log("Current List:", todoList);
-  todoList.splice(startIndex, deleteCount, ...newTasks);
+  todoList.splice(startIndex, deleteCount);
+   todoList.push(...newTasks);
   console.log("Updated List:", todoList);
 }
 const todoList = ['Study JS', 'Eat breakfast', 'Walk dog'];
