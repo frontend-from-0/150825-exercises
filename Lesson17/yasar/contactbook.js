@@ -213,62 +213,48 @@ displayAllContacts();
 3. Search by multiple fields:
    - e.g., find a contact by phone number or email.
 */
-
-function findContact(name) {
+function searchContact(name, email, phone) {
   console.log('------------------');
-  console.log(`Finding a contact with name ${name}...`);
+  let searchObject = {};
+
+  if (name) searchObject.name = name;
+  if (email) searchObject.email = email;
+  if (phone) searchObject.phone = phone;
+
+  const searchBy = Object.keys(searchObject);
+  if (searchBy.length === 0) return; 
+
+  console.log(`Searching a contact by ${searchBy.join(' and ')}...`);
 
   let count = 0;
 
   for (let i = 0; i < contacts.length; i++) {
-    if (contacts[i].name.toLocaleLowerCase().includes(name.toLocaleLowerCase())) {
+    let isMatch = true;
+
+    for (let key in searchObject) {
+      let contactValue = String(contacts[i][key]).toLowerCase();
+      let searchValue = String(searchObject[key]).toLowerCase();
+
+      if (!contactValue.includes(searchValue)) {
+        isMatch = false;
+        break;
+      }
+    }
+    if (isMatch) {
       console.log(
-        `Name: ${contacts[i].name}, Phone: ${contacts[i].phone}, Email: ${contacts[i].email}`,
+        `Found: Name: ${contacts[i].name}, Phone: ${contacts[i].phone}, Email: ${contacts[i].email}`
       );
       count++;
     }
   }
 
   if (count === 0) {
-    console.log(`No contact found with the name: ${name}`);
+    console.log(`No contact found by ${searchBy.join(' and ')}`);
   }
-
   console.log('------------------');
 }
-
-findContact('jo');
-findContact('doe');
-
-
-function searchContact(name, email, phone) {
-  console.log('------------------');
-  let searchObject = {};
-  if (name) searchObject.name = name;
-  if (phone) searchObject.phone = phone;
-  if (email) searchObject.email = email;
-
-  const searchBy = Object.keys(searchObject);
-  console.log('searchBy', searchBy);
-  
-  console.log(`Searching a contact by ${searchBy.join(' and ')}...`);
-
-  let count = 0;
-
-  for (let i = 0; i < contacts.length; i++) {
-    // Try using for in loop here to loop through searchObject
-    
-  }
-
-
-  if (count === 0) {
-    console.log(`No contact found by ${searchBy.join(' and ')} where ${Object.values(searchObject).join(' and ')}`);
-  }
-
-  console.log('------------------');
-}
-
 
 searchContact('John');
 searchContact('John', '123 456 12 34');
-searchContact('John', undefined, 'john@gmail.com');
+searchContact('John', 'john@gmail.com', '123 456 789');
 searchContact(undefined, '123 456 12 34', 'john@gmail.com');
