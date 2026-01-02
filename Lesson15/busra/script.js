@@ -304,23 +304,23 @@ function getDayOfWeek(num) {
       break;
     
     case 4 : 
-      console.log ("Today is Thursday.")
+      console.log ("Today is Thursday.");
       break;
     
     case 5 : 
-      console.log ("Today is Friday.")
+      console.log ("Today is Friday.");
       break;  
 
     case 6 : 
-      console.log ("Today is Saturday.")
+      console.log ("Today is Saturday.");
       break;
       
     case 7 : 
-      console.log ("Today is Sunday.")
+      console.log ("Today is Sunday.");
       break;
 
     default : 
-      console.log ("Invalid day")   
+      console.log ("Invalid day");   
   }
 }
 
@@ -343,6 +343,13 @@ console.log('-------');
 
 console.log('Ex. 13');
 
+function repeatWord(word, times) {
+
+  console.log (word.repeat(times));
+}
+
+repeatWord("hello", 7);
+
 
 console.log('-------');
 
@@ -355,6 +362,13 @@ console.log('-------');
 
 console.log('Ex. 14');
 
+function censorWord(sentence, target) {
+
+  console.log (sentence.replaceAll(target, "****")) 
+
+}
+
+censorWord("The do while loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.", "loop")
 
 console.log('-------');
 
@@ -367,6 +381,21 @@ console.log('-------');
 
 console.log('Ex. 15');
 
+function startsWithA(str) {
+
+  if (str[0].toUpperCase().startsWith("A")) {
+    console.log ("Starts with A");
+  }
+
+  else {
+    console.log ("Does not start with A");
+  }
+}
+
+startsWithA("Last N Characters");
+startsWithA("Anything else");
+startsWithA("anything else");
+
 
 console.log('-------');
 
@@ -378,6 +407,12 @@ console.log('-------');
 */
 
 console.log('Ex. 16');
+
+function sliceLastN(text, n) {
+  console.log (text.slice(-n))
+}
+
+sliceLastN("Grade Checker", 7);
 
 
 console.log('-------');
@@ -394,6 +429,36 @@ console.log('-------');
 */
 
 console.log('Ex. 17');
+
+function gradeChecker(score) {
+  switch (true) {
+    case (score >= 90) : 
+      console.log ("A");
+      break;
+
+    case (score >= 80 && score < 90) : 
+      console.log ("B");
+      break;
+      
+    case (score >= 70 && score < 80) : 
+      console.log ("C");
+      break;
+
+    case (score >= 60 && score < 70) : 
+      console.log ("D");
+      break;
+      
+    case (score < 60) : 
+      console.log ("F");
+      break;  
+  }
+}
+
+gradeChecker(59);
+gradeChecker(88);
+gradeChecker(62);
+gradeChecker(74);
+gradeChecker(100);
 
 
 console.log('-------');
