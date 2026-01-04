@@ -624,6 +624,42 @@ console.log('-------');
 
 console.log('Ex. 24');
 
+function getSeason(monthNum) {
+  switch(monthNum) {
+    case 12 :
+    case 1 :
+    case 2 :
+      console.log ("Winter");
+      break;
+    
+    case 3 :
+    case 4 :
+    case 5 :
+      console.log ("Spring");
+      break;
+      
+    case 6 : 
+    case 7 :
+    case 8 :
+      console.log ("Summer");
+      break;
+      
+    case 9 :
+    case 10 :
+    case 11 :
+      console.log ("Autumn");
+      break;
+      
+    default :
+      console.log ("Invalid month");  
+  }
+}
+
+getSeason(12);
+getSeason(16);
+getSeason(4);
+getSeason(11);
+getSeason(7);
 
 console.log('-------');
 
@@ -635,6 +671,20 @@ console.log('-------');
 */
 
 console.log('Ex. 25');
+
+function containsNumber(str) {
+
+  if (str.match(/\d+/)) {
+    console.log ("Contains number");
+  }
+
+  else {
+    console.log ("No number found");
+  }
+}
+
+containsNumber("Can vote if age >= 18");
+containsNumber("Log the padded string.");
 
 
 console.log('-------');
@@ -648,6 +698,15 @@ console.log('-------');
 
 console.log('Ex. 26');
 
+function padString(str, maxLength) {
+
+  if (str.length < maxLength) {
+    console.log (str.padEnd(maxLength, "*"));
+  }
+}
+
+padString ("Define a func", 20);
+
 
 console.log('-------');
 
@@ -659,6 +718,22 @@ console.log('-------');
 */
 
 console.log('Ex. 27');
+
+function canVote(age) {
+
+  if (age >= 18) {
+    console.log ("Can vote");
+  }
+
+  else {
+    console.log ("Too young to vote");
+  }
+}
+
+canVote (15);
+canVote (24);
+canVote (10);
+canVote (18);
 
 
 console.log('-------');
@@ -674,6 +749,16 @@ console.log('-------');
 
 console.log('Ex. 28');
 
+function reverseWords(sentence) {
+  const sentenceSplit = sentence.split(" ");
+  const reversed = sentenceSplit.map(word => word.split("").reverse().join(""));
+
+  console.log (reversed.join(" "));
+
+}
+
+reverseWords("Reverses each word individually");
+
 
 console.log('-------');
 
@@ -686,6 +771,19 @@ console.log('-------');
 
 console.log('Ex. 29');
 
+function findWordPosition(sentence, word) {
+  if (sentence.includes(word)) {
+    console.log (sentence.indexOf(word));
+  }
+
+  else {
+    console.log ("Not found");
+  }
+}
+
+findWordPosition ("Log the index", "the");
+findWordPosition ("Log the index", "define");
+findWordPosition ("Log the index of", "of");
 
 console.log('-------');
 
@@ -701,6 +799,34 @@ console.log('-------');
 */
 
 console.log('Ex. 30');
+
+function calculate(a, operator, b) {
+  switch (operator) {
+    case "+" :
+      console.log(a+b);
+      break;
+
+    case "-" :
+      console.log(a-b);
+      break;
+      
+    case "*" :
+      console.log (a*b);
+      break;
+      
+    case "/" :
+      console.log (a/b);
+      break;
+      
+    default :
+      console.log ("Invalid operator");  
+  }
+}
+
+calculate (8, "/", 4);
+calculate (146, "-", 54);
+calculate (102, "/", 3);
+calculate (16, "*", 4);
 
 
 console.log('-------');
