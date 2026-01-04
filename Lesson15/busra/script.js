@@ -472,6 +472,11 @@ console.log('-------');
 
 console.log('Ex. 18');
 
+function replaceCharacter(str, oldChar, newChar) {
+  console.log (str.replaceAll(oldChar, newChar));
+}
+
+replaceCharacter("Splits the sentence by spaces. Uppercases the first letter of each word.", "the", "those");
 
 console.log('-------');
 
@@ -486,6 +491,16 @@ console.log('-------');
 
 console.log('Ex. 19');
 
+function titleCase(sentence) {
+  const words = sentence.split(' ');
+  const capitalized = words.map(word =>
+  word[0].toUpperCase() + word.slice(1));
+
+  
+  console.log (capitalized.join(" "));
+}
+
+titleCase ("Splits the sentence by spaces. Uppercases the first letter of each word.");
 
 console.log('-------');
 
@@ -500,6 +515,29 @@ console.log('-------');
 
 console.log('Ex. 20');
 
+function trafficLight(color) {
+  switch(color) {
+  case ("red") : 
+    console.log ("Stop");
+    break;
+  
+  case ("yellow") : 
+    console.log ("Caution");
+    break;
+    
+  case ("green") : 
+    console.log ("Go");
+    break;
+
+  default : 
+    console.log ("Invalid color");  
+  }  
+}
+
+trafficLight("yellow");
+trafficLight("black");
+trafficLight("red");
+trafficLight("green");
 
 console.log('-------');
 
@@ -511,6 +549,19 @@ console.log('-------');
 */
 
 console.log('Ex. 21');
+
+function isLongString(str) {
+  if (str.length > 10) {
+    console.log ("Long string");
+  }
+
+  else {
+    console.log ("Short string");
+  }
+}
+
+isLongString("Check String Length");
+isLongString("Check");
 
 
 console.log('-------');
@@ -525,6 +576,18 @@ console.log('-------');
 
 console.log('Ex. 22');
 
+function isSpam(text) {
+  if (text.toLowerCase().includes("spam")) {
+    console.log ("This text is spam.");
+  }
+
+  else {
+    console.log ("This text is not spam.");
+  }
+}
+
+isSpam ("Please be careful of SPAM emails.");
+isSpam ("Please be careful of emails.");
 
 console.log('-------');
 
@@ -536,6 +599,15 @@ console.log('-------');
 */
 
 console.log('Ex. 23');
+
+function getInitials(fullName) {
+  const nameArray = fullName.split(" ");
+  const initialsArray = nameArray.map(word => word[0].toUpperCase() + ".");
+
+  console.log (initialsArray.join(""));
+}
+
+getInitials ("Büsra kuscu")
 
 
 console.log('-------');
