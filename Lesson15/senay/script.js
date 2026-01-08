@@ -291,7 +291,7 @@ function getDayOfWeek(num) {
       dayName = "Sunday";
       break;
     default:
-      dayName = "İnvalid Day Name";
+      dayName = "Invalid Day Name";
   }
   console.log(dayName);
 }
@@ -348,7 +348,7 @@ console.log("-------");
 console.log("Ex. 15");
 
 function startsWithA(str) {
-  if (str.charAt(0) == "A") {
+  if (str.charAt(0).toUpperCase() === "A") {
     console.log("Starts with A");
   } else {
     console.log("Does not start with A");
@@ -374,20 +374,6 @@ function sliceLastN(text, n) {
 }
 
 sliceLastN(`Slice this content and log it.`, 7);
-
-// I couldn't be sure what exactly wanted at the ex. 16.
-//This is second option below slicing from letter `n` (not include 'n').
-function sliceLastN2(text, n) {
-  const lastIndex = text.lastIndexOf(n);
-  if (lastIndex === -1) {
-    console.log(`The letter '${n}' was not found in the text.`);
-  } else {
-    const slicedText = text.slice(lastIndex + 1, -1);
-    console.log(slicedText);
-  }
-}
-
-sliceLastN2(`Slice this content and log it.`, `n`);
 
 console.log("-------");
 
@@ -436,7 +422,9 @@ console.log("-------");
 */
 console.log("Ex. 18");
 function replaceCharacter(str, oldChar, newChar) {
-  const replacedStr = str.replaceAll(oldChar, newChar);
+  const replacedStr = str
+    .toLowerCase()
+    .replaceAll(oldChar.toLowerCase(), newChar.toLowerCase());
   console.log(replacedStr);
 }
 
@@ -545,7 +533,7 @@ console.log("Ex. 22");
 
 function isSpam(text) {
   let checkedText = text.toLowerCase();
-  if (checkedText.includes("spam") == 1) {
+  if (checkedText.includes("spam")) {
     console.log("This text is spam.");
   } else {
     console.log("This text is not spam.");
@@ -690,18 +678,13 @@ console.log("-------");
 */
 console.log("Ex. 26");
 
-function padString(str, maxLength) {
-  if (str.length < maxLength) {
-    const padedStr = str.padEnd(maxLength, "*");
-    console.log(padedStr);
-    return;
-  } else {
-    console.log(str);
-  }
+function paddedString(str, maxLength) {
+  const paddedStr = str.padEnd(maxLength, "*");
+  console.log(paddedStr);
 }
 
-padString("examp", 10);
-padString("hello", 7);
+paddedString("examp", 10);
+paddedString("hello", 7);
 
 console.log("-------");
 /*
@@ -744,11 +727,11 @@ console.log("Ex. 28");
 
 function reverseWords(sentence) {
   const splitedWords = sentence.split(" ");
-  const words = splitedWords.map((word) => {
+  const reversedWords = splitedWords.map((word) => {
     return word.split("").reverse().join("");
   });
 
-  const reverseSentence = words.join(" ");
+  const reverseSentence = reversedWords.join(" ");
 
   console.log(reverseSentence);
 }
@@ -756,13 +739,13 @@ reverseWords("This is an example sentence");
 
 function reverseWordsWithLoop(sentence) {
   const words = sentence.split(" ");
-  const reversedWordArray = [];
+  const reversedWordsList = [];
 
   for (let i = 0; i < words.length; i++) {
-    const reverseWord = words[i].split("").reverse().join("");
-    reversedWordArray.push(reverseWord);
+    const reversedWord = words[i].split("").reverse().join("");
+    reversedWordArray.push(reversedWord);
   }
-  reversedSentence = reversedWordArray.join(" ");
+  const reversedSentence = reversedWordsList.join(" ");
   console.log(reversedSentence);
 }
 reverseWordsWithLoop("This is an example sentence");
@@ -779,20 +762,19 @@ console.log("Ex. 29");
 
 function findWordPosition(sentence, word) {
   const wordIndex = sentence.indexOf(word);
-  return wordIndex;
+
+  if (wordIndex !== -1) {
+    console.log(`The word ${word} begins at index ${wordIndex}.`);
+    return wordIndex;
+  } else {
+    console.log("Not found");
+    return -1;
+  }
 }
 const sentence = "Learning of Javascript is a lot of fun!";
 const word = "Javascript";
 
 findWordPosition(sentence, word);
-
-const indexResult = findWordPosition(sentence, word);
-
-if (indexResult !== -1) {
-  console.log(`The word ${word} begins at index ${indexResult}.`);
-} else {
-  console.log("Not found");
-}
 
 console.log("-------");
 
@@ -823,6 +805,7 @@ function calculate(a, operator, b) {
     case "/":
       if (b === 0) {
         console.log("You cannot divide by zero");
+        break;
       } else {
         result = a / b;
       }
