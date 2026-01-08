@@ -13,6 +13,10 @@ function sumArray(numbers) {
   for (let i = 0; i < numbers.length; i++) {
     if (typeof numbers[i] === "number") {
       sum += numbers[i];
+      i++;
+    }
+    if (!isNaN(Number(numbers[i] && numbers[i] !== "" && numbers[i] !== " "))) {
+      sum += Number(numbers[i]);
     } else {
       console.log("The value is in incorrect format.");
       // maybe try to convert value to a number, otherwise warn user that the value is in incorrect format
@@ -22,6 +26,21 @@ function sumArray(numbers) {
 }
 
 sumArray([1, 3, "5", 7, -22, 22]);
+
+// Alternative2 try to convert value to a number
+function sumArray2(numbers) {
+  let sum = 0;
+  for (const number of numbers) {
+    if (!isNaN(Number(number)) && number !== " " && number !== null) {
+      sum += Number(number);
+    } else {
+      console.log("The value is in incorrect format.");
+    }
+  }
+  console.log(sum);
+}
+
+sumArray2([1, 3, "5", 7, -22, 22]);
 
 /* 
 1 - index 0 => let sum = 1;
@@ -96,17 +115,19 @@ console.log("-------");
 */
 console.log("Ex. 4");
 
-let sum = 0;
-
 function sumRange(start, end) {
-  while (start <= end) {
-    sum += start;
-    start++;
+  let sum = 0;
+  let current = start;
+  while (current <= end) {
+    sum += current;
+    current++;
   }
   console.log(`Total sum is: ${sum}`);
 }
 
 sumRange(3, 10);
+sumRange(3, 5);
+sumRange(1, 2);
 
 console.log("-------");
 /*
@@ -282,10 +303,10 @@ console.log("-------");
 console.log("Ex.12");
 
 function removeDuplicates(arr) {
-  let newArr = [];
+  const newArr = [];
 
   for (let i = 0; i < arr.length; i++) {
-    let currentItem = arr[i];
+    const currentItem = arr[i];
     if (newArr.includes(currentItem)) {
       console.log(`The item "${currentItem}" is dublicated in [${arr}]!`);
     } else {
@@ -431,7 +452,7 @@ function findMin(numbers) {
       min = numbers[i];
     }
   }
-  console.log("The maximum number of the array is: ", min);
+  console.log("The minimum number of the array is: ", min);
 }
 const exmpArr = [1, 2, 3, 6, -4, 0, 100, 36];
 
@@ -471,12 +492,14 @@ const arrEx18 = [
 countOccurrences(arrEx18, "oil");
 
 console.log("-------");
+
 /*
 19. Remove Falsy Values
     - Define a function `removeFalsyValues(arr)` that loops through an array
       and returns a new array without falsy values (false, 0, "", null, undefined, NaN).
     - Log the new array.
 */
+
 console.log("Ex.19");
 
 function removeFalsyValues(arr) {
@@ -494,6 +517,7 @@ const arrExmp19 = ["b", false, 1, 8, 7, "a", true, 34, 8, null];
 removeFalsyValues(arrExmp19);
 
 console.log("-------");
+
 /*
 20. Sum of All Digits in a String
     - Define a function `sumDigits(str)` that loops through each character of `str`,
@@ -501,6 +525,7 @@ console.log("-------");
     - Log the final sum.
     - Example: "abc123" -> 6
 */
+
 console.log("Ex.20");
 
 function sumDigits(str) {
@@ -592,7 +617,7 @@ function findWordsWithLetter(words, letter) {
   let findedWords = [];
 
   for (let i = 0; i < words.length; i++) {
-    if (words[i].includes(letter)) {
+    if (words[i].toLowerCase().includes(letter.toLowerCase())) {
       findedWords.push(words[i]);
     }
   }
@@ -602,6 +627,7 @@ function findWordsWithLetter(words, letter) {
 findWordsWithLetter(["şemsiye", "kiraz", "şapka", "şeker", "aşk"], "ş");
 
 console.log("-------");
+
 /*
 24. Push and Pop Operations
     - Define a function `pushPopExample(arr, itemToPush)` that:
@@ -611,6 +637,7 @@ console.log("-------");
       - logs the popped element
       - logs the final array
 */
+
 console.log("Ex.24");
 
 function pushPopExamples(arr, itemToPush) {
@@ -634,6 +661,7 @@ console.log("-------");
       - logs the removed person
       - logs the final queue
 */
+
 console.log("Ex.25");
 
 function manageQueue(queue, newPerson) {
@@ -647,6 +675,7 @@ function manageQueue(queue, newPerson) {
 manageQueue(["Senay", "Pamir"], "Ali");
 
 console.log("-------");
+
 /*
 26. To-Do List Application 
   - Define a function `updateTodoList(todoList, startIndex, deleteCount, ...newTasks)`:
@@ -655,11 +684,13 @@ console.log("-------");
    - Inserts any new tasks at the end of the array.
    - Logs the updated list.
 */
+
 console.log("Ex.26");
 
 function updateTodoList(todoList, startIndex, deleteCount, ...newTasks) {
   console.log(todoList);
-  const removedTasks = todoList.splice(startIndex, deleteCount, ...newTasks);
+  const removedTasks = todoList.splice(startIndex, deleteCount);
+  todoList.push(...newTasks);
   console.log("The removed tasks: ", removedTasks);
   console.log(todoList);
 }
