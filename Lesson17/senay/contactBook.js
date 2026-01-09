@@ -77,7 +77,7 @@ function addContact(name, phone, email) {
   for (let i = 0; i < contacts.length; i++) {
     if (contacts[i].name === name) {
       console.warn(
-        `Contact with name ${name} already exists. \nContact in the list: Name: ${contacts[i].name}, email: ${contacts[i].email}, phone: ${contacts[i].phone}}`
+        `Contact with name ${name} already exists. \nContact in the list: Name: ${contacts[i].name}, email: ${contacts[i].email}, phone: ${contacts[i].phone}`
       );
       return;
     }
@@ -277,9 +277,9 @@ console.log("--3. Search by multiple fields:---------");
 function searchContact(name, phone, email) {
   let searchObject = {};
 
-  if (name) searchObject.name = name;
+  if (name) searchObject.name = name.toLowerCase();
   if (phone) searchObject.phone = phone;
-  if (email) searchObject.email = email;
+  if (email) searchObject.email = email.toLowerCase();
 
   const searchBy = Object.keys(searchObject);
 
@@ -304,7 +304,9 @@ function searchContact(name, phone, email) {
           .includes(searchObject.name.toLocaleLowerCase())
       ) {
         matchCount++;
-      } else if (contact[key] === searchObject[key]) {
+      } else if (
+        contact[key].toLowerCase() === searchObject[key].toLowerCase()
+      ) {
         matchCount++;
       }
     }
@@ -338,3 +340,4 @@ searchContact("John");
 searchContact("John", "123 456 12 34");
 searchContact("John", undefined, "john@gmail.com");
 searchContact(undefined, "123 456 789", "john@gmail.com");
+searchContact("JOHN", undefined, "JOHN@GMAIL.COM");

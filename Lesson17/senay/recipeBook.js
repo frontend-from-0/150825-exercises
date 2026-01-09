@@ -62,6 +62,7 @@ Function: displayAllRecipes()
 */
 
 function displayAllRecipes() {
+  console.log("Displaying all recipes...");
   for (let i = 0; i < recipes.length; i++) {
     console.log(
       `Name: ${recipes[i].name}  Ingredients: ${recipes[i].ingredients.join(
@@ -84,6 +85,7 @@ Function: addRecipe(name, ingredients, cookingTime)
 */
 
 function addRecipe(name, ingredients, cookingTime) {
+  console.log("Adding a new recipe...");
   const newRecipe = {
     name,
     ingredients,
@@ -117,6 +119,7 @@ Function: viewRecipe(name)
 */
 
 function viewRecipe(name) {
+  console.log("Viewing a recipe by name...");
   let count = 0;
 
   for (let i = 0; i < recipes.length; i++) {
@@ -146,6 +149,7 @@ Function: updateRecipe(name, newIngredients, newCookingTime)
 */
 
 function updateRecipe(name, newIngredients, newCookingTime) {
+  console.log("Update a recipe by name...");
   for (const recipe of recipes) {
     if (recipe.name.toLocaleLowerCase() === name.toLocaleLowerCase()) {
       recipe.ingredients = newIngredients;
@@ -170,6 +174,7 @@ Function: deleteRecipe(name)
 */
 
 function deleteRecipe(name) {
+  console.log("Delete a recipe by name...");
   for (let i = 0; i < recipes.length; i++) {
     if (name.toLocaleLowerCase() === recipes[i].name.toLocaleLowerCase()) {
       recipes.splice(i, 1);
