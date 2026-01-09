@@ -68,7 +68,7 @@ class ShoppingCart {
     for (let i = 0; i < this.#items.length; i++) {
       if (this.#items[i].name === newItem.name) {
         this.#items[i].quantity += newItem.quantity;
-        this.#total += newItem.price.amount;
+        this.#total += newItem.price.amount * newItem.quantity;
         return;
       }
     }
@@ -82,7 +82,7 @@ class ShoppingCart {
     console.log(`Removing an item from the cart: Item name ${name}.`);
     for (let i = 0; i < this.#items.length; i++) {
       if (this.#items[i].name === name) {
-        this.#total -= this.#items[i].price.amount;
+        this.#total -= this.#items[i].price.amount * this.#items[i].quantity;
         this.#items.splice(i, 1);
         console.log(`Removed item ${name}.`);
       }
@@ -123,7 +123,9 @@ class ShoppingCart {
       const discount = currentTotal * rate;
       const finalTotal = currentTotal - discount;
 
-      console.log(`Discount amount is %${percentage}.`);
+      console.log(
+        `Discount amount is %${percentage}. You saved ${discount} USD.`
+      );
       console.log(`The discount amount applied successfully!`);
       console.log(`The new total is ${finalTotal}.`);
       return finalTotal;
