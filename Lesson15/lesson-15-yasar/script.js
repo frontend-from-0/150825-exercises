@@ -594,9 +594,8 @@ containsNumber("2024");
 
 console.log('Ex.26')
 function padString(str, maxLength) {
-    const doldurulmusMetin = str.padEnd(maxLength, "*");
-    
-    console.log(doldurulmusMetin);
+    const filledText = str.padEnd(maxLength, "*");
+    console.log(filledText);
 }
 
 
