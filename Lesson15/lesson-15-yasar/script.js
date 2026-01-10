@@ -389,8 +389,8 @@ gradeChecker(40);
 */
 console.log('Ex.18')
 function replaceCharacter(str, oldChar, newChar) {
-    const sonuc = str.replaceAll(oldChar, newChar);
-    console.log(sonuc);
+    const result = str.replaceAll(oldChar, newChar);
+    console.log(result);
 }
 replaceCharacter("Banana", "a", "o");      
 replaceCharacter("Mississipi", "s", "z");  // Mizzizzipi
