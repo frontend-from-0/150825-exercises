@@ -499,7 +499,7 @@ function findWordsWithLetter(words, letter) {
   for (let i = 0; i < words.length; i++) {
     
     let currentWord = words[i]; 
-    if (currentWord.includes(letter)) {
+    if (currentWord.toLowerCase().includes(letter.toLowerCase())) {
       
       result.push(currentWord);
     }
