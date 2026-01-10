@@ -342,8 +342,8 @@ startsWithA("apple");
 */
 console.log('Ex.16')
 function sliceLastN(text, n) {
-    const sonuc = text.slice(-n);
-    console.log(sonuc);
+    const result = text.slice(-n);
+    console.log(result);
 }
 
 sliceLastN("Hello World", 3);  
