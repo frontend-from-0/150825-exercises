@@ -370,7 +370,7 @@ return min;
 }
 
 const minNumber = findMin([10, 23, 2, 3]);
-console.log("minimumnumber:",minnumber);
+console.log("Minimum number:", minNumber);
 
 /*
 18. Count Occurrences of a Word in an Array
