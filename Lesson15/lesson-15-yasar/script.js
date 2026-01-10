@@ -288,9 +288,8 @@ getDayOfWeek("1");
 */
 console.log('Ex.13')
 function repeatWord(word, times) {
-    const sonuc = word.repeat(times);
-    
-    console.log(sonuc);
+    const result = word.repeat(times);
+    console.log(result);
 }
 
 repeatWord("Hello", 3); 
