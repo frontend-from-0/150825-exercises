@@ -484,8 +484,8 @@ isLongString("Code2career");
 console.log('Ex.22')
 function isSpam(text) {
     
-    const kucukHarfliMetin = text.toLowerCase();
-    if (kucukHarfliMetin.includes("spam")) {
+    const lowerCasedText = text.toLowerCase();
+    if (lowerCasedText.includes("spam")) {
         console.log("This text is spam.");
     } else {
         console.log("This text is not spam.");
