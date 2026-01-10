@@ -323,7 +323,7 @@ censorWord("This is a bad word and another bad word.", "bad");
 console.log('Ex.15')
 
 function startsWithA(str) {
-    if (str.charAt(0) === 'A'){
+    if (str.charAt(0).toUpperCase() === 'A'){
         console.log("Starts with A");
     } else {
         console.log("Does not start with A");
