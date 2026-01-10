@@ -369,7 +369,7 @@ function findMin(numbers){
 return min;
 }
 
-let minnumber = findMin ([10, 23, 2, 3]);
+const minNumber = findMin([10, 23, 2, 3]);
 console.log("minimumnumber:",minnumber);
 
 /*
