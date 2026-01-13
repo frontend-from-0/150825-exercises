@@ -18,19 +18,6 @@ class ShoppingCart {
     }
   }
 
-  /*
------------------------------------------------------------
-  STEP 2: Add Items to the Cart
------------------------------------------------------------
-1. Create an `addItem` method in the `ShoppingCart` class.
-2. The method should:
-   - Accept `name`, `price`, and `quantity` as parameters.
-   - Check if the item already exists in the cart.
-     - If it exists, increase the quantity.
-     - Otherwise, add the new item to the `#items` array.
-*/
-
-  // newItem should be an object
   addItem(newItem) {
     console.log(
       `Adding a new item to the cart. Item name ${newItem.name}, quantity: ${newItem.quantity}`,
@@ -113,40 +100,5 @@ shoppingCart1.total;
 shoppingCart1.applyDiscount('SAVE20');
 shoppingCart1.total;
 
-/*
------------------------------------------------------------
-  STEP 3: Remove Items from the Cart
------------------------------------------------------------
-1. Add a `removeItem` method to the `ShoppingCart` class.
-2. The method should:
-   - Accept the `name` of the item to remove.
-   - Remove the item from the `#items` array if it exists.
-*/
 
-
-
-
-    
-/*
------------------------------------------------------------
-  STEP 4: Calculate the Total Cost
------------------------------------------------------------
-1. Add a `getTotal` method to the `ShoppingCart` class.
-2. The method should:
-   - Calculate and return the total cost of all items in 
-     the cart.
-*/
-
-
-/*
------------------------------------------------------------
-  STEP 5: Apply a Discount
------------------------------------------------------------
-1. Add an `applyDiscount` method to the `ShoppingCart` class.
-2. The method should:
-   - Accept a discount code (e.g., 'SAVE10', 'SAVE20').
-   - Apply a percentage discount to the total cost if the 
-     code is valid.
-3. Use an object to store discount codes and their values.
-*/
 
