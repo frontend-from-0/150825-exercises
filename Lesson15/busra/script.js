@@ -772,11 +772,10 @@ console.log('-------');
 console.log('Ex. 29');
 
 function findWordPosition(sentence, word) {
-  if (sentence.includes(word)) {
-    console.log (sentence.indexOf(word));
-  }
-
-  else {
+  const index = sentence.indexOf(word);
+  if (index >= 0) {
+    console.log(index);
+  } else {
     console.log ("Not found");
   }
 }
