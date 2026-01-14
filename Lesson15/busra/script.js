@@ -128,7 +128,7 @@ console.log('Ex. 6');
 
 function checkFileExtension(filename) {
 
-  if (filename.toLowerCase().endsWith(".pdf".toLowerCase())) {
+  if (filename.toLowerCase().endsWith(".pdf")) {
     console.log ('This is a PDF file.');
   }
 
@@ -261,7 +261,7 @@ console.log('Ex. 11');
 
 function checkProtocol(url) {
 
-  if (url.toLowerCase().startsWith("https".toLowerCase())) {
+  if (url.toLowerCase().startsWith("https")) {
     console.log ("Secure connection");
   }
 
