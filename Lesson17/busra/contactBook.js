@@ -254,18 +254,22 @@ function searchContact(name, phone, email) {
   console.log(`Searching a contact by ${searchBy.join(" and ")}...`);
 
   let count = 0;
+  for (let i = 0; i < contacts.length; i++) {
+    let isMatch = true;
 
-  for (const searchBy in searchObject) {
-    for (let i = 0; i < contacts.length; i++) {
-      if (contacts[i][searchBy] === searchObject[searchBy]) {
-        console.log(
-          `Name: ${contacts[i].name}, Phone: ${contacts[i].phone}, Email: ${contacts[i].email}`,
-        );
-        count++;
-        return;
+    for (const key in searchObject) {
+      if (searchObject[key] !== contacts[i][key]) {
+        isMatch = false;
+        break;
       }
     }
-    // Try using for in loop here to loop through searchObject
+
+    if (isMatch) {
+      console.log(
+        `Name: ${contacts[i].name}, Phone: ${contacts[i].phone}, Email: ${contacts[i].email}`,
+      );
+      count++;
+    }
   }
 
   if (count === 0) {
@@ -282,3 +286,4 @@ searchContact("John", "123 456 12 34");
 searchContact("John", undefined, "john@gmail.com");
 searchContact(undefined, "123 456 12 34", "john@gmail.com");
 searchContact("Daniel", "333 444 222");
+searchContact("Jane Doe", "032 889 789");

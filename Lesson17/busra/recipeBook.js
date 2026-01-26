@@ -25,7 +25,23 @@ Run this file in Node.js or the browser console to test.
    - ingredients (array of strings)
    - cookingTime (number, in minutes)
 */
-
+const recipes = [
+  {
+    name: "Pasta",
+    ingredients: ["pasta", "tomato", "garlic"],
+    cookingTime: 20,
+  },
+  {
+    name: "Soup",
+    ingredients: ["lentil", "onion", "garlic", "tomato", "carrot", "potato"],
+    cookingTime: 30,
+  },
+  {
+    name: "Fajita",
+    ingredients: ["chicken", "tortilla", "onion", "lime"],
+    cookingTime: 45,
+  },
+];
 
 /*
 -----------------------------------------------------------
@@ -37,7 +53,20 @@ Function: displayAllRecipes()
   Ingredients: pasta, tomato, garlic
   Cooking Time: 20 minutes
 */
+function displayAllRecipes() {
+  console.log("------------------");
+  console.log("Displaying all recipes...");
 
+  for (let i = 0; i < recipes.length; i++) {
+    console.log(`Name: ${recipes[i].name}`);
+    console.log(`Ingredients: ${recipes[i].ingredients}`);
+    console.log(`Cooking Time: ${recipes[i].cookingTime} minutes`);
+    console.log("------------------");
+  }
+
+  console.log("End of recipes list");
+  console.log("------------------");
+}
 
 /*
 -----------------------------------------------------------
@@ -50,6 +79,23 @@ Function: addRecipe(name, ingredients, cookingTime)
 - ingredients should be an array like ['egg', 'milk', 'flour']
 */
 
+function addRecipe(name, ingredients, cookingTime) {
+  console.log("------------------");
+  console.log(`Adding a recipe with name ${name}...`);
+
+  const newRecipe = { name, ingredients, cookingTime };
+
+  for (let i = 0; i < recipes.length; i++) {
+    if (name.toLowerCase() === recipes[i].name.toLowerCase()) {
+      console.warn(`Recipe with name ${name} already exists`);
+      return;
+    }
+  }
+  recipes.push(newRecipe);
+
+  console.log(`Recipe added successfully`);
+  console.log("------------------");
+}
 
 /*
 -----------------------------------------------------------
@@ -60,7 +106,27 @@ Function: viewRecipe(name)
 - If not found, shows a message.
 */
 
+function viewRecipe(name) {
+  console.log("------------------");
+  console.log(`Viewing a recipe with name ${name}...`);
 
+  let count = 0;
+
+  for (let i = 0; i < recipes.length; i++) {
+    if (recipes[i].name.includes(name)) {
+      console.log(`Name: ${recipes[i].name}`);
+      console.log(`Ingredients: ${recipes[i].ingredients}`);
+      console.log(`Cooking Time: ${recipes[i].cookingTime} minute`);
+      count++;
+    }
+  }
+
+  if (count === 0) {
+    console.log(`No recipe found with the name: ${name}`);
+  }
+
+  console.log("------------------");
+}
 
 /*
 -----------------------------------------------------------
@@ -72,6 +138,27 @@ Function: updateRecipe(name, newIngredients, newCookingTime)
 - Logs success or error message.
 */
 
+function updateRecipe(name, newIngredients, newCookingTime) {
+  console.log("------------------");
+  console.log(`Updating a recipe with name ${name}...`);
+
+  let count = 0;
+
+  for (let i = 0; i < recipes.length; i++) {
+    if (recipes[i].name === name) {
+      recipes[i].ingredients = newIngredients;
+      recipes[i].cookingTime = newCookingTime;
+      console.log("Recipe updated successfully.");
+      count++;
+    }
+  }
+
+  if (count === 0) {
+    console.log(`No recipe found with the name: ${name}`);
+  }
+
+  console.log("------------------");
+}
 
 /*
 -----------------------------------------------------------
@@ -82,6 +169,22 @@ Function: deleteRecipe(name)
 - Logs success or error message.
 */
 
+function deleteRecipe(name) {
+  console.log("------------------");
+  console.log(`Deleting a recipe with name ${name}...`);
+
+  for (let i = 0; i < recipes.length; i++) {
+    if (recipes[i].name === name) {
+      recipes.splice(i, 1);
+      console.log(`Recipe deleted successfully.`);
+      return;
+    }
+  }
+
+  console.log(`No recipe found with the name: ${name}`);
+
+  console.log("------------------");
+}
 
 /*
 -----------------------------------------------------------
@@ -93,3 +196,70 @@ Function: filterByIngredient(ingredient)
 Function: filterByMaxTime(maxMinutes)
 - Shows recipes that take <= maxMinutes to cook.
 */
+function filterByIngredient(ingredient) {
+  console.log("------------------");
+  console.log(`Finding a ingredient with name ${ingredient}...`);
+
+  const filteredRecipes = recipes.filter((recipe) => {
+    return recipe.ingredients.includes(ingredient);
+  });
+
+  if (filteredRecipes.length > 0) {
+    filteredRecipes.forEach((recipe) => {
+      console.log(`Name: ${recipe.name}`);
+      console.log(`Ingredients: ${recipe.ingredients}`);
+      console.log(`Cooking Time: ${recipe.cookingTime}`);
+    });
+  } else {
+    console.log(`No recipes found by ingredient with name ${ingredient}`);
+  }
+
+  console.log("------------------");
+}
+
+// function filterByMaxTime(maxMinutes) {
+//   const quickRecipes = recipes.filter((recipe) => {
+//     return recipe.cookingTime <= maxMinutes;
+//   });
+
+//   if (quickRecipes.length > 0) {
+//     quickRecipes.forEach((recipe) => {
+//       console.log(`Name: ${recipe.name}`);
+//       console.log(`Ingredients: ${recipe.ingredients}`);
+//       console.log(`Cooking Time: ${recipe.cookingTime} minutes`);
+//     });
+//   } else {
+//     console.log(`No recipes found under ${maxMinutes} minutes.`);
+//   }
+
+//   console.log("------------------");
+// }
+
+displayAllRecipes();
+
+addRecipe("Magnolia", ["milk", "sugar", "egg", "biscuit", "flour"], 40);
+addRecipe("Pasta", ["pasta", "tomato", "garlic"], 20);
+
+displayAllRecipes();
+
+viewRecipe("Pasta");
+viewRecipe("Chicken");
+viewRecipe("Fajita");
+
+updateRecipe("Fajita", ["chicken", "tortilla", "salt", "sauce"], 48);
+updateRecipe("Chicken", ["chicken", "onion", "salt", "sauce"], 15);
+
+displayAllRecipes();
+
+deleteRecipe("Magnolia");
+deleteRecipe("Soup");
+deleteRecipe("Börek");
+
+displayAllRecipes();
+
+filterByIngredient("tomato");
+filterByIngredient("onion");
+
+filterByMaxTime(32);
+filterByMaxTime(10);
+filterByMaxTime(50);
