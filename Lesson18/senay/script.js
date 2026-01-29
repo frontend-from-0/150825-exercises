@@ -30,10 +30,16 @@ Node.js or a browser console.
 class ShoppingCart {
   #items;
   #total;
+  #discounts;
 
   constructor() {
     this.#items = [];
     this.#total = 0;
+    this.#discounts = {
+      SAVE10: 0.1,
+      SAVE20: 0.2,
+      SAVE50: 0.5,
+    };
   }
 
   viewCart() {
@@ -42,7 +48,7 @@ class ShoppingCart {
 
     for (const item of this.#items) {
       console.log(
-        `Name: ${item.name}, Price: ${item.price.amount} ${item.price.currency} Quantity: ${item.quantity}`
+        `Name: ${item.name}, Price: ${item.price.amount} ${item.price.currency}, Quantity: ${item.quantity}`,
       );
     }
   }
@@ -63,7 +69,7 @@ class ShoppingCart {
   addItem(newItem) {
     console.log("----------------");
     console.log(
-      `Adding a new item to the cart: Item name ${newItem.name}, quantity: ${newItem.quantity}`
+      `Adding a new item to the cart: Item name ${newItem.name}, quantity: ${newItem.quantity}`,
     );
     for (let i = 0; i < this.#items.length; i++) {
       if (this.#items[i].name === newItem.name) {
@@ -74,7 +80,7 @@ class ShoppingCart {
     }
 
     this.#items.push(newItem);
-    this.#total += newItem.price.amount;
+    this.#total += newItem.price.amount * newItem.quantity;
   }
 
   removeItem(name) {
@@ -107,24 +113,17 @@ class ShoppingCart {
 
   applyDiscount(discountCode) {
     console.log("----------------");
-    console.log(`Applying discount with discount code...`);
-    const discounts = {
-      SAVE10: 0.1,
-      SAVE20: 0.2,
-      SAVE50: 0.5,
-    };
-
-    const currentTotal = this.getTotal();
-    console.log("----------------");
     console.log(`Applying a discount to the total cost.`);
-    if (discounts[discountCode]) {
-      const rate = discounts[discountCode];
-      const percentage = discounts[discountCode] * 100;
+    const currentTotal = this.getTotal();
+
+    if (this.#discounts[discountCode]) {
+      const rate = this.#discounts[discountCode];
+      const percentage = rate * 100;
       const discount = currentTotal * rate;
       const finalTotal = currentTotal - discount;
 
       console.log(
-        `Discount amount is %${percentage}. You saved ${discount} USD.`
+        `Discount amount is %${percentage}. You saved ${discount} USD.`,
       );
       console.log(`The discount amount applied successfully!`);
       console.log(`The new total is ${finalTotal}.`);
@@ -133,6 +132,10 @@ class ShoppingCart {
       console.log(`Invalid discount code: ${discountCode}`);
       return currentTotal;
     }
+  }
+
+  addDiscountCode(newDiscountCode, rate) {
+    this.#discounts[newDiscountCode] = rate;
   }
 }
 
@@ -162,8 +165,9 @@ shoppingCart1.removeItem("Tablet");
 shoppingCart1.viewCart();
 shoppingCart1.getTotal();
 
-shoppingCart1.applyDiscount("SAVE20");
-shoppingCart1.applyDiscount("SAVE30");
+shoppingCart1.addDiscountCode("WELCOME2026", 0.3);
+shoppingCart1.applyDiscount("SAVE10");
+shoppingCart1.applyDiscount("WELCOME2026");
 
 /*
 -----------------------------------------------------------
