@@ -33,7 +33,15 @@ const recipes = [
   },
   {
     name: "Soup",
-    ingredients: ["lentil", "onion", "garlic", "tomato", "carrot", "potato"],
+    ingredients: [
+      "lentil",
+      "onion",
+      "garlic",
+      "tomato",
+      "carrot",
+      "potato",
+      "salt",
+    ],
     cookingTime: 30,
   },
   {
@@ -200,40 +208,49 @@ function filterByIngredient(ingredient) {
   console.log("------------------");
   console.log(`Finding a ingredient with name ${ingredient}...`);
 
-  const filteredRecipes = recipes.filter((recipe) => {
-    return recipe.ingredients.includes(ingredient);
-  });
+  let count = 0;
 
-  if (filteredRecipes.length > 0) {
-    filteredRecipes.forEach((recipe) => {
-      console.log(`Name: ${recipe.name}`);
-      console.log(`Ingredients: ${recipe.ingredients}`);
-      console.log(`Cooking Time: ${recipe.cookingTime}`);
-    });
-  } else {
+  for (let i = 0; i < recipes.length; i++) {
+    for (let j = 0; j < recipes[i].ingredients.length; j++) {
+      if (
+        recipes[i].ingredients[j]
+          .toLowerCase()
+          .includes(ingredient.toLowerCase())
+      ) {
+        console.log(`Name: ${recipes[i].name}`);
+        console.log(`Ingredients: ${recipes[i].ingredients}`);
+        console.log(`Cooking Time: ${recipes[i].cookingTime}`);
+        count++;
+      }
+    }
+  }
+
+  if (count === 0) {
     console.log(`No recipes found by ingredient with name ${ingredient}`);
+  }
+  console.log("------------------");
+}
+
+function filterByMaxTime(maxMinutes) {
+  console.log("------------------");
+  console.log(`Finding recipes with max time ${maxMinutes} minutes...`);
+
+  let count = 0;
+
+  for (let i = 0; i < recipes.length; i++) {
+    if (recipes[i].cookingTime <= maxMinutes) {
+      console.log(`Name: ${recipes[i].name}`);
+      console.log(`Ingredients: ${recipes[i].ingredients}`);
+      console.log(`Cooking Time: ${recipes[i].cookingTime} minutes`);
+      count++;
+    }
+  }
+  if (count === 0) {
+    console.log(`No recipes found under ${maxMinutes} minutes.`);
   }
 
   console.log("------------------");
 }
-
-// function filterByMaxTime(maxMinutes) {
-//   const quickRecipes = recipes.filter((recipe) => {
-//     return recipe.cookingTime <= maxMinutes;
-//   });
-
-//   if (quickRecipes.length > 0) {
-//     quickRecipes.forEach((recipe) => {
-//       console.log(`Name: ${recipe.name}`);
-//       console.log(`Ingredients: ${recipe.ingredients}`);
-//       console.log(`Cooking Time: ${recipe.cookingTime} minutes`);
-//     });
-//   } else {
-//     console.log(`No recipes found under ${maxMinutes} minutes.`);
-//   }
-
-//   console.log("------------------");
-// }
 
 displayAllRecipes();
 
@@ -259,7 +276,13 @@ displayAllRecipes();
 
 filterByIngredient("tomato");
 filterByIngredient("onion");
+filterByIngredient("garlic");
+filterByIngredient("tortilla");
+filterByIngredient("salt");
 
-filterByMaxTime(32);
-filterByMaxTime(10);
+filterByMaxTime(15);
+filterByMaxTime(22);
+filterByMaxTime(30);
 filterByMaxTime(50);
+
+displayAllRecipes();
