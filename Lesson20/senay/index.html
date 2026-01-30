@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appointment Booking</title>
+    <!--Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Book an Appointment</h1>
+      </header>
+
+      <form class="booking">
+        <div class="container">
+          <section class="user-details" aria-labelledby="user-info">
+            <h2 id="user-info">Your Information</h2>
+            <div class="name-field">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" required placeholder="John Doe" />
+              <p class="input-error" id="nameError"></p>
+            </div>
+            <div class="field">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                required
+                placeholder="john@example.com"
+              />
+              <p class="input-error" id="emailError"></p>
+            </div>
+          </section>
+          <section class="calendar">
+            <label for="date">Select a date</label>
+            <input type="date" id="date" />
+            <p class="input-error" id="dateError"></p>
+            <h2 id="timeslots-heading">Available Time Slots</h2>
+            <fieldset
+              class="timeslots"
+              id="timeslots"
+              aria-labelledby="timeslots-heading"
+            >
+              <legend class="hidden">Choose a time slot</legend>
+              <button
+                class="slot"
+                type="button"
+                aria-label="Select 09:00 time slot"
+              >
+                09:00
+              </button>
+              <button
+                class="slot"
+                type="button"
+                aria-label="Select 10:30 time slot"
+              >
+                10:30
+              </button>
+              <button
+                class="slot"
+                type="button"
+                aria-label="Select 13:00 time slot"
+              >
+                13:00
+              </button>
+              <button
+                class="slot"
+                type="button"
+                aria-label="Select 14:30 time slot"
+              >
+                14:30
+              </button>
+              <button
+                class="slot"
+                type="button"
+                aria-label="Select 16:00 time slot"
+              >
+                16:00
+              </button>
+            </fieldset>
+          </section>
+        </div>
+
+        <aside class="summary" aria-labelledby="summary-heading">
+          <h2 id="summary-heading">Your Appointment</h2>
+          <p>Full Name: <span id="filled-name">-</span></p>
+          <p>Email: <span id="filled-email">-</span></p>
+          <p>Date: <span id="selected-date">-</span></p>
+          <p>Time: <span id="selected-time">-</span></p>
+          <button id="confirm" disabled type="submit">Confirm Booking</button>
+        </aside>
+      </form>
+
+      <div
+        class="hidden"
+        id="confirmation-message"
+        aria-labelledby="conf-title"
+      >
+        <div class="conf-header">
+          <i class="fa fa-circle-check success-icon"></i>
+          <h2 id="conf-title">Booking is successfully confirmed.</h2>
+        </div>
+
+        <p><b>Full Name: </b><span id="confirmed-name">-</span></p>
+        <p><b>Email: </b><span id="confirmed-email">-</span></p>
+        <p><b>Date: </b><span id="confirmed-date">-</span></p>
+        <p><b>Time: </b><span id="confirmed-time">-</span></p>
+        <a
+          href="./index.html"
+          class="back-button fa fa-arrow-left"
+          type="button"
+          aria-label="back-button"
+        ></a>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
