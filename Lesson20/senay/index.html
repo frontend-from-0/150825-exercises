@@ -28,6 +28,7 @@
             <div class="name-field">
               <label for="name">Full Name</label>
               <input type="text" id="name" required placeholder="John Doe" />
+              <p class="input-error" id="nameError"></p>
             </div>
             <div class="field">
               <label for="email">Email Address</label>
@@ -37,11 +38,13 @@
                 required
                 placeholder="john@example.com"
               />
+              <p class="input-error" id="emailError"></p>
             </div>
           </section>
           <section class="calendar">
             <label for="date">Select a date</label>
             <input type="date" id="date" />
+            <p class="input-error" id="dateError"></p>
             <h2 id="timeslots-heading">Available Time Slots</h2>
             <fieldset
               class="timeslots"

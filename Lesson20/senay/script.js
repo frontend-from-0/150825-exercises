@@ -1,5 +1,6 @@
 //Defining Variables - Sellecting elements by using get method.
 const dateInput = document.getElementById("date");
+const dateError = document.getElementById("dateError");
 const selectedDate = document.getElementById("selected-date");
 const confirmButton = document.getElementById("confirm");
 const timeSlotButtons = document.getElementsByClassName("slot");
@@ -11,9 +12,11 @@ const confirmationMessage = document.getElementById("confirmation-message");
 const timeSlotContainer = document.getElementById("timeslots");
 
 const nameInput = document.getElementById("name");
+const nameError = document.getElementById("nameError");
 const filledName = document.getElementById("filled-name");
 const confirmedName = document.getElementById("confirmed-name");
 const emailInput = document.getElementById("email");
+const emailError = document.getElementById("emailError");
 const filledEmail = document.getElementById("filled-email");
 const confirmedEmail = document.getElementById("confirmed-email");
 
@@ -45,21 +48,26 @@ const data = {
   time: null,
 };
 
-//name -> add "input" event
+//name -> add "blur" event
 //name input -> data.name
 
 nameInput.addEventListener("blur", function () {
   filledName.textContent = nameInput.value;
   data.name = nameInput.value;
   allowSubmit();
-  if (!nameRegex.test(data.name) && data.name !== "") {
-    nameInput.style.borderColor = "red";
+
+  const isInvalidName = !nameRegex.test(data.name) && data.name !== "";
+
+  if (isInvalidName) {
+    nameError.innerText = "Please enter a valid name.";
+    nameInput.classList.add("invalid");
   } else {
-    nameInput.style.borderColor = "";
+    nameError.innerText = "";
+    nameInput.classList.remove("invalid");
   }
 });
 
-//email -> add "input" evet
+//email -> add "blur" evet
 //email input -> data.name
 
 emailInput.addEventListener("blur", function () {
@@ -67,10 +75,14 @@ emailInput.addEventListener("blur", function () {
   data.email = emailInput.value;
   allowSubmit();
 
-  if (!emailRegex.test(data.email) && data.email !== "") {
-    emailInput.style.borderColor = "red";
+  const isInvalidEmail = !emailRegex.test(data.email) && data.email !== "";
+  if (isInvalidEmail) {
+    emailError.innerText =
+      "Please enter a valid email address (e.g., name@example.com).";
+    emailInput.classList.add("invalid");
   } else {
-    emailInput.style.borderColor = "";
+    emailError.innerText = "";
+    emailInput.classList.remove("invalid");
   }
 });
 
@@ -78,8 +90,21 @@ emailInput.addEventListener("blur", function () {
 //Date Input value -> data.date, selectedDate
 
 dateInput.addEventListener("change", function () {
-  selectedDate.textContent = dateInput.value;
-  data.date = dateInput.value;
+  const selectedValue = dateInput.value;
+  const isValidDate =
+    selectedValue && selectedValue >= minDate && selectedValue <= maxDate;
+
+  if (isValidDate) {
+    data.date = dateInput.value;
+    selectedDate.textContent = selectedValue;
+    dateError.innerText = "";
+    dateInput.classList.remove("invalid");
+  } else {
+    data.date = null;
+    selectedDate.textContent = "-";
+    dateError.innerText = "Please choose a valid date";
+    dateInput.classList.add("invalid");
+  }
   allowSubmit();
 });
 
@@ -106,10 +131,21 @@ function deselectTimeSlots() {
 }
 
 function allowSubmit() {
-  if (data.date && data.time && data.name && data.email) {
-    if (nameRegex.test(data.name) && emailRegex.test(data.email)) {
-      confirmButton.removeAttribute("disabled");
-    }
+  const isNameValid = data.name !== "" && nameRegex.test(data.name);
+  const isEmailValid = data.email !== "" && emailRegex.test(data.email);
+  const isDateValid =
+    data.date &&
+    data.date !== "-" &&
+    data.date >= minDate &&
+    data.date <= maxDate;
+  const isTimeSelected = data.time !== null && data.time !== "";
+
+  console.log({ isNameValid, isEmailValid, isDateValid, isTimeSelected });
+
+  if (isNameValid && isEmailValid && isDateValid && isTimeSelected) {
+    confirmButton.removeAttribute("disabled");
+  } else {
+    confirmButton.disabled = true;
   }
 }
 
