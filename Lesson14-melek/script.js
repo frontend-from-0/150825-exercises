@@ -8,11 +8,7 @@ Focus: Variables, data types, arithmetic, strings, random numbers, template lite
 
 // 1. Declare variables firstNumber=5 and secondNumber=3 and log their sum.
 // CODE HERE
-<<<<<<< HEAD
 const firstNumber = 5;
-=======
-const firstNumber = 6;
->>>>>>> cd859a2b0fc33cbe57d4d23fdaeb503286f50c3e
 const secondNumber = 3;
 
 const total = firstNumber + secondNumber;
@@ -55,9 +51,15 @@ console.log('Ex.6', greeting.toUpperCase(), greeting);
 
 // 7. Concatenate "Hello" and "World" with a space in between and log the result.
 // CODE HERE
+const text1 = "Hello"
+const text2 = "World"
+console.log("Ex.7", text1 + " " + text2);
+
 
 // 8. Check the type of a variable, e.g., let x = 42. Log the type using typeof.
 // CODE HERE
+let x = 42;
+console.log("Ex.8", typeof x);
 
 // 9. Convert the number 100 to a string and log the result.
 // CODE HERE
@@ -104,8 +106,14 @@ console.log(step1, step2, step3, step4);
 // 12. Round the number 3.7 down using Math.floor and 3.2 up using Math.ceil, log both.
 // CODE HERE
 
+console.log("Ex.12 floor:", Math.floor(3.7)); // 3
+console.log("Ex.12 ceil:", Math.ceil(3.2));   // 4);
+
 // 13. Declare a boolean variable isStudent = true. Log it.
 // CODE HERE
+
+const isStudent = true;
+console.log("Ex.13", isStudent);
 
 // 14. Initialize counter = 0, then increment it by 1 using counter++ and log it.
 // CODE HERE
@@ -124,27 +132,61 @@ console.log('Ex15', points);
 
 // 16. Declare name="Alice", age=30, city="Paris". Log "Alice (30) lives in Paris" using template literals.
 // CODE HERE
+const name16 = "Alice";
+const age16 = 30;
+const city16 = "Paris";
+console.log(`Ex.16 ${name16} (${age16}) lives in ${city16}`);
 
 // 17. Declare variables x=5, y=10, z=15. Log their total sum.
 // CODE HERE
 
+const x17 = 5;
+const y17 = 10;
+const z17 = 15;
+console.log("Ex.17", x17 + y17 + z17);
+
 // 18. Declare dividend=10 and divisor=3. Log the quotient (divisionResult) and difference (differenceResult).
 // CODE HERE
+
+const divindend = 10;
+const divisor = 3;
+console.log ("Ex.18 quotient:", dividend / divisor, "difference:", dividend - divisor);
 
 // 19. Declare firstName and lastName. Create fullName by concatenating them with a space and log it.
 // CODE HERE
 
+const firstName = "John";
+const lastName = "Doe";
+const fullName = firstName + " " + lastName;
+console.log("Ex.19", fullName);
+
 // 20. Declare firstFactor=7 and secondFactor=2. Log the product.
 // CODE HERE
+
+const firstFactor = 7;
+const secondFactor = 2;
+console.log("Ex.20", firstFactor * secondFactor);
 
 // 21. Log the value of Math.PI.
 // CODE HERE
 
+console.log("Ex.21", Math.PI);
+
 // 22. Declare counter=0. Increment it using three different methods (e.g., counter++, counter+=1, counter=counter+1) and log the result each time.
 // CODE HERE
 
+let counter22 = 0;
+console.log("Ex.22 step1:", counter22++); // 0 → sonra 1 olur
+console.log("Ex.22 step2:", counter22 += 1); // 2
+counter22 = counter22 + 1; // 3
+console.log("Ex.22 step3:", counter22);
+
 // 23. Declare initialTemperature=20. Increase it by 5 and log the result.
 // CODE HERE
+
+let initialTemperature = 20;
+initialTemperature += 5;
+console.log("Ex.23", initialTemperature);
 
 // 24. Declare numberEx9=6. Increment it using the prefix ++ operator and log both the variable and the incremented value.
 // CODE HERE
@@ -152,6 +194,11 @@ let numberEx9 = 6;
 console.log('Ex.24', ++numberEx9);
 // 25. Declare numberEx10=8. Increment it using the postfix ++ operator and log both the original variable and the incremented value.
 // CODE HERE
+
+let numberEx10 = 8;
+console.log("Ex.25 original:", numberEx10++); // önce 8 yazar sonra 9 olur
+console.log("Ex.25 incremented:", numberEx10);
+
 
 // 26. Declare numberEx11=-3. Increment it by 1 using prefix ++, then multiply the result by 2 and log the final value.
 // CODE HERE
@@ -164,3 +211,7 @@ console.log(numberEx26 + 1 * 2); // -3 + 1 * 2
 
 // 27. Declare a=2 and b=3. Increment a using the prefix ++ operator, then add b to the result and log it.
 // CODE HERE
+
+let a27 = 2;
+let b27 = 3;
+console.log("Ex.27", ++a27 + b27); // (2 → 3) + 3 = 6
