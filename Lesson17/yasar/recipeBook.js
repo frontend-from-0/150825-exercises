@@ -219,9 +219,9 @@ function filterByIngredient(ingredient) {
 function filterByMaxTime(maxMinutes) {
   console.log('-------------')
   console.log(`--- Recipes ready in ${maxMinutes} minutes or less ---`);
-  const fastRecipes = recipes.filter((recipe) => recipe.cookingTime <= maxMinutes);
-  if (fastRecipes.length > 0) {
-    fastRecipes.forEach((recipe) => {
+  const recipesUnderMaxTime = recipes.filter((recipe) => recipe.cookingTime <= maxMinutes);
+  if (recipesUnderMaxTime.length > 0) {
+    recipesUnderMaxTime.forEach((recipe) => {
       console.log(`- ${recipe.name} (${recipe.cookingTime} min)`);
     });
   } else {
