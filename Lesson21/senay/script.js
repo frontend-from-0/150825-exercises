@@ -25,7 +25,8 @@ const cvvInput = document.getElementById("cvv");
 const cvvError = document.getElementById("cvvError");
 
 const submitBtn = document.getElementById("btnSubmit");
-const goBackBtn = document.getElementById("success");
+const goBackBtn = document.getElementById("backButton");
+const successMessage = document.getElementById("success");
 
 //---Form Correction---
 
@@ -50,10 +51,12 @@ function validateEmail() {
   if (emailPattern.test(emailInput.value)) {
     emailError.innerText = "";
     emailInput.classList.remove("invalid");
+    emailInput.setAttribute("aria-invalid", "false");
   } else {
     emailError.innerText =
       "Please enter correct email address (e.g. john@gmail.com)";
     emailInput.classList.add("invalid");
+    emailInput.setAttribute("aria-invalid", "true");
     formCorrect = false;
   }
   allowSubmit();
@@ -65,10 +68,12 @@ function validatePhone() {
   if (phonePattern.test(phoneInput.value)) {
     phoneError.innerText = "";
     phoneInput.classList.remove("invalid");
+    phoneInput.setAttribute("aria-invalid", "false");
   } else {
     phoneError.innerText =
       "Please enter correct phone number (e.g. 530 345 66 66)";
     phoneInput.classList.add("invalid");
+    phoneInput.setAttribute("aria-invalid", "true");
     formCorrect = false;
   }
   allowSubmit();
@@ -80,14 +85,17 @@ function validateName(input, errorField) {
   if (input.value.length >= 50) {
     errorField.innerText = "This field should contain less than 50 characters.";
     input.classList.add("invalid");
+    input.setAttribute("aria-invalid", "true");
     formCorrect = false;
   } else {
     if (onlyLettersPattern.test(input.value)) {
       input.classList.remove("invalid");
       errorField.innerText = "";
+      input.setAttribute("aria-invalid", "false");
     } else {
       errorField.innerText = "This field can only contain letters.";
       input.classList.add("invalid");
+      input.setAttribute("aria-invalid", "true");
       formCorrect = false;
     }
   }
@@ -102,10 +110,12 @@ function validateCardNumber() {
   if (!cardPattern.test(cardNumbers)) {
     cardNumberError.innerText = "Please enter a 16-digit card number.";
     cardNumberInput.classList.add("invalid");
+    cardNumberInput.setAttribute("aria-invalid", "true");
     formCorrect = false;
   } else {
     cardNumberError.innerText = "";
     cardNumberInput.classList.remove("invalid");
+    cardNumberInput.setAttribute("aria-invalid", "false");
     formCorrect = true;
   }
   allowSubmit();
@@ -117,10 +127,12 @@ function validateExpDate() {
   if (!expDatePattern.test(expDateInput.value)) {
     expDateError.innerText = "Please enter a valid date.(e.g. 01/30)";
     expDateInput.classList.add("invalid");
+    expDateInput.setAttribute("aria-invalid", "true");
     formCorrect = false;
   } else {
     expDateError.innerText = "";
     expDateInput.classList.remove("invalid");
+    expDateInput.setAttribute("aria-invalid", "false");
     formCorrect = true;
   }
   allowSubmit();
@@ -132,10 +144,12 @@ function validateCvv() {
   if (!cvvPattern.test(cvvInput.value)) {
     cvvError.innerText = "Please enter a 3-digit Cvv number.";
     cvvInput.classList.add("invalid");
+    cvvInput.setAttribute("aria-invalid", "false");
     formCorrect = false;
   } else {
     cvvError.innerText = "";
     cvvInput.classList.remove("invalid");
+    cvvInput.setAttribute("aria-invalid", "false");
     formCorrect = true;
   }
   allowSubmit();
@@ -155,7 +169,7 @@ formElement.addEventListener("submit", function (event) {
   validateCvv();
 
   if (formCorrect) {
-    document.getElementById("success").classList.remove("hidden");
+    successMessage.classList.remove("hidden");
     formElement.classList.add("hidden");
   }
 });
@@ -178,15 +192,6 @@ function allowSubmit() {
     expDateInput.value !== "" && expDatePattern.test(expDateInput.value);
   const isCvvValid = cvvInput.value !== "" && cvvPattern.test(cvvInput.value);
 
-  console.log({
-    isNameValid,
-    isLastNameValid,
-    isEmailValid,
-    isPhoneValid,
-    isExpDateValid,
-    isCvvValid,
-  });
-
   if (
     isNameValid &&
     isLastNameValid &&
@@ -205,7 +210,7 @@ function allowSubmit() {
 //Go Back Button
 
 function goBack() {
-  goBackBtn.classList.add("hidden");
+  successMessage.classList.add("hidden");
   formElement.classList.remove("hidden");
   formElement.reset();
 

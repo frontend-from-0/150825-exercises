@@ -37,7 +37,7 @@ form {
 
 input {
   background: #B0DECA;
-  border: none;
+  border: 0.5px solid transparent;
   border-radius: 8px;
   padding: 16px;
   color: #17362B;
@@ -53,7 +53,7 @@ input {
 
 input.invalid {
   outline: 1.2px solid red;
-  border: 1px solid red;
+  border: 0.5px solid red;
 }
 
 .btn-submit {
@@ -101,10 +101,15 @@ input.invalid {
   background-color: #fff;
   border: none;
   border-radius: 5px;
-  
+  cursor: pointer;
 }
 
-#success-label {
+.btn-success:hover {
+  color: #094a36;
+  background-color: #e8e6e6;
+}
+
+#success-message {
  font-size: 24px;
 }
 
@@ -124,9 +129,7 @@ input {
   font-size: 16px;
   
 }
-  h1 {
-  font-size: 36px;
-}
+
 
 .btn-submit {
   font-size: 16px;
