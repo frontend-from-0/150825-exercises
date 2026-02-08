@@ -8,11 +8,7 @@ Focus: Variables, data types, arithmetic, strings, random numbers, template lite
 
 // 1. Declare variables firstNumber=5 and secondNumber=3 and log their sum.
 // CODE HERE
-<<<<<<< HEAD
-const firstNumber = 5;
-=======
 const firstNumber = 6;
->>>>>>> cd859a2b0fc33cbe57d4d23fdaeb503286f50c3e
 const secondNumber = 3;
 
 const total = firstNumber + secondNumber;
