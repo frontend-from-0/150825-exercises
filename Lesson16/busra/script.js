@@ -336,15 +336,10 @@ console.log('-------');
 console.log('Ex.14');
 
 function reverseWords(sentence) {
-  const words = sentence.split("");
-  const reversedArr = [];
-  for (let i = words.length-1; i >= 0; i--) {
-    reversedArr.push(words[i]);
-  }
-
-  const reversedSentence = reversedArr.join("");
-
-  console.log(reversedSentence);
+ const words = sentence.split(" ");
+ const reversedWords = words.reverse();
+ const reversedSentence = reversedWords.join(" ");
+ console.log(reversedSentence);
 }
 
 reverseWords("Log the reversed sentence.");
