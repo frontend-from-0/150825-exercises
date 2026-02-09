@@ -206,7 +206,7 @@ Function: filterByMaxTime(maxMinutes)
 */
 function filterByIngredient(ingredient) {
   console.log("------------------");
-  console.log(`Finding a ingredient with name ${ingredient}...`);
+  console.log(`Finding recipes that contains ${ingredient}...`);
 
   let count = 0;
 
