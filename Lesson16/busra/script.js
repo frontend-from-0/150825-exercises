@@ -475,11 +475,9 @@ console.log('Ex.20');
 function sumDigits(str) {
   let sum = 0;
   for (let i = 0; i < str.length; i++) {
-    let num = Number(str[i]);
-    
-    if(!isNaN(num)) {
-      sum += num;
-    }
+   if (/\d/.test(str[i])) {
+    sum += Number(str[i]);
+ }
   }
   console.log(`Total sum: ${sum}`);
 }
