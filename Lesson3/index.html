@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 3</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Semantic elements: header, main, footer, etc. -->
+    <header>
+      <h1>Lesson 3</h1>
+    </header>
+
+    <main>
+      <h2>Contact <span class="text-accent">Form</span></h2>
+      <form method="GET" action="">
+        <!-- Div is not a semantic element, it's only used to group elements and has not additional meaning. -->
+        <div class="input-group">
+          <label for="name" class="full-width">Full name</label>
+          <input
+            type="text"
+            id="name"
+            name="full_name"
+            placeholder="John Doe"
+            class="full-width input-field"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="email" class="full-width">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="john@doe.com"
+            class="full-width input-field"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="phone" class="full-width">Phone</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="+46 73 123 32 12"
+            class="full-width input-field"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="birthdate" class="full-width">Date of birth</label>
+          <input
+            type="date"
+            id="birthdate"
+            name="birthdate"
+            class="full-width input-field"
+          />
+        </div>
+
+        <fieldset class="input-group">
+          <legend>What is your native language?</legend>
+
+          <input type="radio" name="lang" id="lang-tr" value="turkish" />
+          <label for="lang-tr">Turkish</label>
+
+          <input type="radio" name="lang" id="lang-en" value="english" />
+          <label for="lang-en">English</label>
+
+          <input type="radio" name="lang" id="lang-other" value="other" />
+          <label for="lang-other">Other</label>
+        </fieldset>
+
+        <fieldset class="input-group">
+          <legend>What langauges do you want to learn?</legend>
+
+          <input
+            type="checkbox"
+            name="lang-to-learn-html"
+            id="lang-html"
+            value="HTML"
+          />
+          <label for="lang-html">HTML</label>
+
+          <input
+            type="checkbox"
+            name="lang-to-learn-css"
+            id="lang-css"
+            value="CSS"
+          />
+          <label for="lang-css">CSS</label>
+
+          <input
+            type="checkbox"
+            name="lang-to-learn-js"
+            id="lang-js"
+            value="JS"
+          />
+          <label for="lang-js">JavaScript (JS)</label>
+        </fieldset>
+
+        <div class="input-group">
+          <label for="country" class="full-width"
+            >What country are you from?</label
+          >
+
+          <select name="country" id="country" class="full-width input-field">
+            <option value="" disabled selected>Select a country</option>
+            <option value="turkiye">Turkiye</option>
+            <option value="sweden">Sweden</option>
+            <option value="usa">USA</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="message" class="full-width">Your message</label>
+          <textarea
+            name="message"
+            id="message"
+            class="full-width input-field"
+            placeholder="I would like to learn new programming languages, can you help me?"
+            maxlength="500"
+          ></textarea>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Send message" />
+        <!-- Use button is you need to add another HTML element to the button label (e.g. icon or image)
+       <button type="submit">Send message</button> -->
+        <input type="reset" class="btn btn-secondary" value="Clear" />
+      </form>
+    </main>
+
+    <footer>
+      <!-- Span is not a semantic element -->
+      <span>© Code2Career AB</span>
+    </footer>
+  </body>
+</html>
