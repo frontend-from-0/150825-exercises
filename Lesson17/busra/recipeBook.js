@@ -118,18 +118,18 @@ function viewRecipe(name) {
   console.log("------------------");
   console.log(`Viewing a recipe with name ${name}...`);
 
-  let count = 0;
+   let found = false;
 
-  for (let i = 0; i < recipes.length; i++) {
-    if (recipes[i].name.includes(name)) {
-      console.log(`Name: ${recipes[i].name}`);
-      console.log(`Ingredients: ${recipes[i].ingredients}`);
-      console.log(`Cooking Time: ${recipes[i].cookingTime} minute`);
-      count++;
+  for (const recipe of recipes) {
+    if (recipe.name.toLowerCase() === name.toLowerCase()) {
+      console.log(`Name: ${recipe.name}`);
+      console.log(`Ingredients: ${recipe.ingredients.join(", ")}`);
+      console.log(`Cooking Time: ${recipe.cookingTime} minutes`);
+      found = true;
     }
   }
 
-  if (count === 0) {
+  if (!found) {
     console.log(`No recipe found with the name: ${name}`);
   }
 
