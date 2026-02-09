@@ -153,7 +153,7 @@ function updateRecipe(name, newIngredients, newCookingTime) {
   let count = 0;
 
   for (let i = 0; i < recipes.length; i++) {
-    if (recipes[i].name === name) {
+    if (recipes[i].name.toLowerCase() === name.toLowerCase()) {
       recipes[i].ingredients = newIngredients;
       recipes[i].cookingTime = newCookingTime;
       console.log("Recipe updated successfully.");
