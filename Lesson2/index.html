@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson2</title>
+    <!-- CSS in HTML -->
+    <style>
+      /* body is a CSS selector that allows us to select body HTML element */
+      body {
+        margin: 0;
+      }
+
+      header {
+        /* rule: value; */
+        background-color: rgb(9, 112, 150);
+      }
+    </style>
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <!-- Inline Styles - DO NOT USE -->
+  <body style="background-color: rgb(229, 248, 255)">
+    <!-- Semantic elements (header, nav, main, footer) -->
+    <header>
+      <nav>
+        <!-- ul is a parent element of li element -->
+        <ul>
+          <!-- li is a child element of ul element. -->
+          <li>
+            <!-- anchor tag -->
+            <a href="#">Home</a>
+          </li>
+
+          <li>
+            <!-- href is an attirbute. It requeres a link to a web page.
+           ./about.html is a relative URL
+          -->
+            <a href="./about.html">About</a>
+          </li>
+          <li>
+            <a href="./contact.html">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h1>HTML</h1>
+
+      <div>
+        <p>
+          <!-- Anna: how to open new tab but not redirect the user there -->
+          <a
+            class="link text-small"
+            href="https://en.wikipedia.org/wiki/HTML"
+            target="_blank"
+            rel="noreferrer noopener"
+            >Hypertext Markup Language (HTML)</a
+          >
+          is the standard markup language[a] for documents designed to be
+          displayed in a web browser. It defines the content and structure of
+          web content. It is often assisted by technologies such as Cascading
+          Style Sheets (CSS) and scripting languages such as
+          <a
+            class="link-accent"
+            href="https://en.wikipedia.org/wiki/JavaScript"
+            target="_blank"
+            rel="noreferrer noopener"
+            >JavaScript.</a
+          >
+        </p>
+
+        <p class="text-small">
+          Web browsers receive HTML documents from a web server or from local
+          storage and render the documents into multimedia web pages. HTML
+          describes the structure of a web page semantically and originally
+          included cues for its appearance.
+        </p>
+      </div>
+    </main>
+    <footer>
+      <div>
+      <span>Tel: <a href="tel:+46313684200" class="link"> +46 31 368 42 00 </a></span>
+      </div>
+      <div>
+      <span
+        >Email:
+        <a href="mailto:turistinfo@goteborg.com" class="link"
+          >turistinfo@goteborg.com</a
+        ></span
+      >
+      </div>
+    </footer>
+  </body>
+</html>
