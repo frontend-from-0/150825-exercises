@@ -688,8 +688,11 @@ console.log('-------');
 console.log('Ex. 27');
 
 function canVote(age) {
-  if (age >= 18) console.log('Can vote');
-  else console.log('Too young to vote');
+  if (age >= 18) {
+  console.log('Can vote');
+  } else {
+  console.log('Too young to vote');
+  }
 }
 
 canVote(17);
