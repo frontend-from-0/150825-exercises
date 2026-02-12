@@ -114,7 +114,7 @@ console.log('Ex. 6');
 function checkFileExtension(filename) {
 if (filename.endsWith ('.pdf'))
 {
-console.log('This is a PDF filename.');
+console.log('This is a PDF file.');
 }
 else{
   console.log('Not a PDF file.');
