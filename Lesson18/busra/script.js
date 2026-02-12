@@ -59,8 +59,8 @@ class ShoppingCart {
     );
     for (let i = 0; i < this.#items.length; i++) {
       if (this.#items[i].name.includes(newItem.name)) {
-        this.#items[i].quantity++;
-        this.#total += newItem.price.amount;
+       this.#items[i].quantity += newItem.quantity;
+       this.#total += newItem.price.amount * newItem.quantity;
         return;
       }
     }
