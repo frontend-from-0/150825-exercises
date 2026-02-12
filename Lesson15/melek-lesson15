@@ -59,7 +59,7 @@ console.log('-------');
    - Example: "user@example.com" -> "example.com"
 */
 
-console.log('Ex. 3');
+console.log('Ex. 4');
 
 function getDomain(email) {
   const indexOfAtSign = email.indexOf('@');
