@@ -79,21 +79,22 @@ function removeFromCart(product) {
 
 function decrementCart(product) {
   const productQuantitySpan = document.getElementById(`${product}_quantity`);
+
   const productCartItem = document.getElementById(`${product}_cart`);
 
   products[product].quantity--;
+  totalPrice -= products[product].price;
   const newQuantity = products[product].quantity;
+  productQuantitySpan.textContent = newQuantity;
+  updateTotal();
 
   if (newQuantity <= 0) {
     productCartItem.classList.add("hidden");
+    updateTotal();
     saveCart();
     return;
   }
 
-  totalPrice -= products[product].price;
-  updateTotal();
-
-  productQuantitySpan.textContent = newQuantity;
   productCartItem.classList.remove("hidden");
 
   saveCart();
