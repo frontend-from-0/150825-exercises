@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Select increment / decrement buttons for every product and add event listeners to them
 
     const decrementButton = document.getElementById(`${product}_decrement`);
-    decrementButton.addEventListener("click", () => decrementCart(product));
+    decrementButton.addEventListener("click", () => decrementQuantity(product));
 
     const incrementButton = document.getElementById(`${product}_increment`);
     incrementButton.addEventListener("click", () => addToCart(product));
@@ -77,25 +77,26 @@ function removeFromCart(product) {
   saveCart();
 }
 
-function decrementCart(product) {
+function decrementQuantity(product) {
   const productQuantitySpan = document.getElementById(`${product}_quantity`);
-
   const productCartItem = document.getElementById(`${product}_cart`);
 
-  products[product].quantity--;
-  totalPrice -= products[product].price;
-  const newQuantity = products[product].quantity;
-  productQuantitySpan.textContent = newQuantity;
-  updateTotal();
-
-  if (newQuantity <= 0) {
-    productCartItem.classList.add("hidden");
-    updateTotal();
-    saveCart();
+  if (products[product].quantity <= 0) {
     return;
   }
 
-  productCartItem.classList.remove("hidden");
+  products[product].quantity--;
+  totalPrice -= products[product].price;
+  updateTotal();
+
+  const newQuantity = products[product].quantity;
+  productQuantitySpan.textContent = newQuantity;
+
+  if (newQuantity === 0) {
+    productCartItem.classList.add("hidden");
+  } else {
+    productCartItem.classList.remove("hidden");
+  }
 
   saveCart();
 }
@@ -112,7 +113,6 @@ function resetCart() {
   updateTotal();
 
   localStorage.removeItem("cart");
-  saveCart();
 }
 
 function updateTotal() {
