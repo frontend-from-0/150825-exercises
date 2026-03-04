@@ -28,12 +28,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const decreaseButton = document.getElementById(`${product}_decrement`);
     decreaseButton.addEventListener('click', () => decreaseQuantity(product));
-  }
 
-  totalPriceElement.textContent = totalPrice;
+  }
 
   const clearcartButton = document.getElementById('cart_clear');
   clearcartButton.addEventListener('click', () => clearCart());
+
+  totalPriceElement.textContent = totalPrice;
+
 });
 
 // (addtocartbutton)
@@ -49,6 +51,13 @@ function addToCart(product) {
 
   const productCartItem = document.getElementById(`${product}_cart`);
   productCartItem.classList.remove('hidden');
+
+  localStorage.setItem('cartData', JSON.stringify(products));
+}
+
+// (incrementbutton)
+function incrementQuantity(product) {
+  addToCart(product);
 }
 // (removefromcartbutton)
 function removeFromCart(product) {
@@ -60,6 +69,9 @@ function removeFromCart(product) {
 
   const productCartItem = document.getElementById(`${product}_cart`);
   productCartItem.classList.add('hidden');
+
+
+  localStorage.setItem('cartData', JSON.stringify(products));
 }
 // (decrementbutton)
 function decreaseQuantity(product) {
@@ -75,20 +87,11 @@ function decreaseQuantity(product) {
   if (newQuantity === 0) {
     const productCartItem = document.getElementById(`${product}_cart`);
     productCartItem.classList.add('hidden');
-  }
-}
-// (incrementbutton)
-function incrementQuantity(product) {
-  if (products[product].quantity <1) {
-    products[product].quantity++;
-    totalPrice += products[product].price;
-    totalPriceElement.textContent = totalPrice;
-  } else{
-    addToCart(product);
-  }
 
-  localStorage.setItem('cartData', JSON.stringify(products));
+    localStorage.setItem('cartData', JSON.stringify(products));
+  }
 }
+
 // (clearcartbutton)
 function clearCart() {
   totalPrice = 0;
@@ -101,7 +104,9 @@ function clearCart() {
     productQuantitySpan.textContent = 0; 
 
     const productCartItem = document.getElementById(`${product}_cart`);
-    productCartItem.classList.add('hidden'); 
+    productCartItem.classList.add('hidden');
+    
+    localStorage.setItem('cartData', JSON.stringify(products));
   }
 }
 
