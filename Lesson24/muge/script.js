@@ -246,7 +246,7 @@ function updateUser(event) {
   // Yaşın 1 ile 99 arasında olup olmadığını kontrol et
   const ageNumber = parseInt(age, 10);
   if (ageNumber < 1 || ageNumber > 99) {
-    showStatus("Please enter a valid age (between 1 and 99)!", false);
+    showStatus("Please enter a valid age (between 1 and 99).", false);
     return;
   }
 
