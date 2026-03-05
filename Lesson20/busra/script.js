@@ -1,3 +1,5 @@
+// Variables
+
 const dateInput = document.getElementById("date");
 const selectedDate = document.getElementById("selected-date");
 const confirmButton = document.getElementById("confirm");
@@ -21,6 +23,8 @@ const data = {
   date: null,
   time: null,
 };
+
+// Events
 
 dateInput.addEventListener("change", function () {
   selectedDate.textContent = dateInput.value;
@@ -74,6 +78,8 @@ backButton.addEventListener("click", function () {
   selectedTime.textContent = "-";
 });
 
+// Functions
+
 function showSelectedTime(button) {
   deselectTimeSlots();
   button.classList.add("selected");
@@ -91,3 +97,24 @@ function allowSubmit() {
     confirmButton.removeAttribute("disabled");
   }
 }
+
+function getFutureDate(days) {
+  const today = new Date();
+  today.setDate(today.getDate() + days);
+
+  const year = today.getFullYear();
+  let month = today.getMonth() + 1;
+  let day = today.getDate();
+
+  if (month < 10) {
+    month = "0" + month;
+  }
+  if (day < 10) {
+    day = "0" + day;
+  }
+
+  return year + "-" + month + "-" + day;
+}
+
+dateInput.min = getFutureDate(1);
+dateInput.max = getFutureDate(6);
