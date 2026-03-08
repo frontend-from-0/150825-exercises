@@ -33,7 +33,7 @@ document.getElementById("getUsersButton").addEventListener("click", fetchUsers);
 
 // Get Data by fetching from dummyjson.com url address
 function fetchUsers() {
-  fetch("https://dummyjson.com/users-hata")
+  fetch("https://dummyjson.com/users")
     .then((response) => {
       if (!response.ok) {
         throw Error(
