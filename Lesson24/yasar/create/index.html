@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UpdateUser</title>
+  <link rel="stylesheet" href="../update/styles.css">
+</head>
+<body>
+
+  <div class="form-wrapper">
+    <div class="form-container">
+      
+      <form id="updateForm">
+        <div class="form-group">
+          <label for="firstName">First name:</label>
+          <input type="text" id="firstName" name="firstName" placeholder="firstname">
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last name:</label>
+          <input type="text" id="lastName" name="lastName" placeholder="lastname">
+        </div>
+
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="number" id="age" min="1" name="age" placeholder="age">
+        </div>
+
+        <button type="submit" class="button button--success">Send</button>
+      </form>
+
+    </div>
+  </div>
+
+  <script src="../update/update.js"></script>
+</body>
+</html>
