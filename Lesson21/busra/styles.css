@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #214a3d;
+  color: #fff;
+}
+
+main {
+  max-width: 960px;
+  margin: 96px auto;
+}
+
+form {
+  max-width: 448px;
+}
+
+label {
+  font-size: 1.1rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 32px 0;
+}
+
+input {
+  background: #d4f0e7;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  color: #3d0303;
+}
+
+.input-error {
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  margin: 0;
+  height: 16px;
+}
+
+.btn-success {
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  display: block;
+  width: 100%;
+  font-weight: 900;
+
+  color: #214a3d;
+  background-color: #fff;
+}
+
+.success-page {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  border: solid 0.5px #858f8c;
+  font-size: 1.2rem;
+  padding: 5rem;
+  margin: 4rem;
+  width: 50vw;
+  box-shadow: 0 0 5px black;
+  background-color: #e6e6e6;
+  color: #214a3d;
+}
+
+.check-icon {
+  font-size: 1.5rem;
+  margin-left: 5px;
+}
+
+
+
+.hidden {
+  display: none;
+}
