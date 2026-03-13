@@ -42,20 +42,20 @@ dateInput.addEventListener("change", function () {
 
 nameInput.addEventListener("blur", function () {
   enteredName.textContent = nameInput.value;
-  data.name = nameInput.value;
+  data.name = nameInput.value.trim();
   allowSubmit();
 });
 
 emailInput.addEventListener("blur", function () {
   enteredEmail.textContent = emailInput.value;
-  data.email = emailInput.value;
+  data.email = emailInput.value.trim();
   allowSubmit();
 });
 
 bookingForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  if (!data.date && !data.time && data.name && data.email) {
+  if (!data.date || !data.time || !data.name || !data.email) {
     return;
   }
   bookingForm.classList.add("hidden");
@@ -95,6 +95,8 @@ function deselectTimeSlots() {
 function allowSubmit() {
   if (data.date && data.time && data.name && data.email) {
     confirmButton.removeAttribute("disabled");
+  } else {
+    confirmButton.setAttribute("disabled", "true");
   }
 }
 
