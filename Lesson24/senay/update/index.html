@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update the user</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1 id="pageTitle">Update User Profile</h1>
+      <div id="loadingMessage">
+        <p>Loading user data, please wait...</p>
+      </div>
+      <div id="statusContainer" class="container hidden">
+        <p id="status"></p>
+        <button id="closeButton" type="button" aria-label="Close menu">
+          X
+        </button>
+      </div>
+      <form action="" id="update-form">
+        <div class="form-group">
+          <label for="image">Profile Picture URL</label>
+          <input type="text" id="image" name="image" />
+        </div>
+
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" required />
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" required />
+        </div>
+
+        <div class="form-group">
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+
+        <div class="form-group">
+          <label for="username">User Name</label>
+          <input type="text" id="username" name="userName" required />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+
+        <div class="ctas justify-between">
+          <a class="button" id="goBackButton" href="../index.html"> Go Back </a>
+          <button
+            class="button button--success"
+            type="submit"
+            id="updateUserButton"
+          >
+            Update user
+          </button>
+        </div>
+      </form>
+    </main>
+
+    <script src="../update/script.js"></script>
+  </body>
+</html>
