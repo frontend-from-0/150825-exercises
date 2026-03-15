@@ -36,77 +36,74 @@ expDateInput.addEventListener("blur", validateExpDate);
 cvvInput.addEventListener("blur", validateCvv);
 
 function validateEmail() {
-  if (emailPattern.test(emailInput.value)) {
-    emailError.innerText = "";
-    inputElement.removeAttribute("aria-invalid");
+  if (emailPattern.test(emailInput.value.trim())) {
+    emailError.textContent = "";
+    emailInput.removeAttribute("aria-invalid");
   } else {
-    emailError.innerText =
+    emailError.textContent =
       "Please enter correct email address (e.g. john@gmail.com)";
     formCorrect = false;
-    inputElement.setAttribute("aria-invalid", "true");
+    emailInput.setAttribute("aria-invalid", "true");
   }
 }
 
 function validatePhone() {
-  if (phonePattern.test(phoneInput.value)) {
-    phoneError.innerText = "";
-    inputElement.removeAttribute("aria-invalid");
+  if (phonePattern.test(phoneInput.value.trim())) {
+    phoneError.textContent = "";
+    phoneInput.removeAttribute("aria-invalid");
   } else {
-    phoneError.innerText =
+    phoneError.textContent =
       "Please enter correct phone number (e.g. 530 345 66 66)";
     formCorrect = false;
-    inputElement.setAttribute("aria-invalid", "true");
+    phoneInput.setAttribute("aria-invalid", "true");
   }
 }
 
 function validateName(input, errorField) {
-  if (input.value.length >= 50) {
-    errorField.innerText = "This field should contain less than 50 characters.";
+  errorField.textContent = "";
+  if (input.value.trim().length >= 50) {
+    errorField.textContent =
+      "This field should contain less than 50 characters.";
     formCorrect = false;
-    inputElement.setAttribute("aria-invalid", "true");
-  } else {
-    if (onlyLettersPattern.test(input.value)) {
-      errorField.innerText = "";
-      inputElement.removeAttribute("aria-invalid");
-    } else {
-      errorField.innerText = "This field can only contain letters.";
-      formCorrect = false;
-      inputElement.setAttribute("aria-invalid", "true");
-    }
+    input.setAttribute("aria-invalid", "true");
+  } else if (!onlyLettersPattern.test(input.value.trim())) {
+    errorField.textContent = "This field can only contain letters.";
+    formCorrect = false;
+    input.setAttribute("aria-invalid", "true");
   }
 }
 
 function validateCard() {
-  if (cardPattern.test(cardNumberInput.value)) {
-    cardNumberError.innerText = "";
-    inputElement.removeAttribute("aria-invalid");
+  if (cardPattern.test(cardNumberInput.value.trim())) {
+    cardNumberError.textContent = "";
+    cardNumberInput.removeAttribute("aria-invalid");
   } else {
-    cardNumberError.innerText =
+    cardNumberError.textContent =
       "Please enter your 16-digit card number with spaces.";
     formCorrect = false;
-    inputElement.setAttribute("aria-invalid", "true");
+    cardNumberInput.setAttribute("aria-invalid", "true");
   }
 }
 
 function validateExpDate() {
-  if (expDatePattern.test(expDateInput.value)) {
-    expDateError.innerText = "";
-    inputElement.removeAttribute("aria-invalid");
+  if (expDatePattern.test(expDateInput.value.trim())) {
+    expDateError.textContent = "";
+    expDateInput.removeAttribute("aria-invalid");
   } else {
-    expDateError.innerText = "Please enter a valid expiration date.";
+    expDateError.textContent = "Please enter a valid expiration date.";
     formCorrect = false;
-    inputElement.setAttribute("aria-invalid", "true");
+    expDateInput.setAttribute("aria-invalid", "true");
   }
 }
 
 function validateCvv() {
-  if (cvvPattern.test(cvvInput.value)) {
-    cvvError.innerText = "";
-    inputElement.removeAttribute("aria-invalid");
+  if (cvvPattern.test(cvvInput.value.trim())) {
+    cvvError.textContent = "";
+    cvvInput.removeAttribute("aria-invalid");
   } else {
-    cvvError.innerText = "Please enter the 3 digit security code.";
+    cvvError.textContent = "Please enter the 3 digit security code.";
     formCorrect = false;
-    inputElement.setAttribute("aria-invalid", "true");
+    cvvInput.setAttribute("aria-invalid", "true");
   }
 }
 
