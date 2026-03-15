@@ -20,6 +20,7 @@ let products = {
 let totalPrice = 0;
 
 const totalPriceElement = document.getElementById("total");
+const clearCartButton = document.getElementById("cart_clear");
 
 function saveCartToLocalStorage() {
   localStorage.setItem("savedcart", JSON.stringify(products));
@@ -37,6 +38,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const productQuantitySpan = document.getElementById(`${product}_quantity`);
     productQuantitySpan.textContent = products[product].quantity;
 
+    if (products[product].quantity === 0) {
+      const productCartItem = document.getElementById(`${product}_cart`);
+      if (productCartItem) {
+        productCartItem.classList.add("hidden");
+      }
+    }
+
     const addCartButton = document.getElementById(`${product}_add`);
     addCartButton.addEventListener("click", () => addToCart(product));
 
@@ -44,14 +52,12 @@ document.addEventListener("DOMContentLoaded", function () {
     removeCartButton.addEventListener("click", () => removeFromCart(product));
 
     const decrementButton = document.getElementById(`${product}_decrement`);
-    decrementButton.addEventListener("click", () => decrementFromCart(product));
+    decrementButton.addEventListener("click", () => decrementQuantity(product));
 
     const incrementButton = document.getElementById(`${product}_increment`);
     incrementButton.addEventListener("click", () => addToCart(product));
-
-    const clearCartButton = document.getElementById("cart_clear");
-    clearCartButton.addEventListener("click", () => clearCart(product));
   }
+  clearCartButton.addEventListener("click", clearCart);
 
   totalPriceElement.textContent = totalPrice;
 });
@@ -84,35 +90,36 @@ function removeFromCart(product) {
   saveCartToLocalStorage();
 }
 
-function decrementFromCart(product) {
-  if (products[product].quantity <= 1) {
-    return;
+function decrementQuantity(product) {
+  if (products[product].quantity > 0) {
+    products[product].quantity--;
+    const updatedQuantity = products[product].quantity;
+
+    totalPrice -= products[product].price;
+    totalPriceElement.textContent = totalPrice;
+
+    const productQuantitySpan = document.getElementById(`${product}_quantity`);
+    productQuantitySpan.textContent = updatedQuantity;
+
+    if (updatedQuantity === 0) {
+      const productCartItem = document.getElementById(`${product}_cart`);
+      productCartItem.classList.add("hidden");
+    }
+
+    saveCartToLocalStorage();
   }
-  const decrementQuantity = --products[product].quantity;
-
-  const decrementButton = document.getElementById(`${product}_decrement`);
-  if (decrementQuantity === 1) {
-    decrementButton.disabled = true;
-  }
-
-  totalPrice -= products[product].price;
-  totalPriceElement.textContent = totalPrice;
-
-  const productQuantitySpan = document.getElementById(`${product}_quantity`);
-  productQuantitySpan.textContent = decrementQuantity;
-  saveCartToLocalStorage();
 }
 
-function clearCart(product) {
-  const productCartItem = document.getElementById(`${product}_cart`);
-
-  if (productCartItem) {
+function clearCart() {
+  for (const product in products) {
+    products[product].quantity = 0;
+    const productQuantitySpan = document.getElementById(`${product}_quantity`);
+    productQuantitySpan.textContent = products[product].quantity;
+    const productCartItem = document.getElementById(`${product}_cart`);
     productCartItem.classList.add("hidden");
   }
-
-  products[product].quantity = 0;
-
   totalPrice = 0;
   totalPriceElement.textContent = totalPrice;
+
   saveCartToLocalStorage();
 }
