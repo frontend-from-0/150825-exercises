@@ -40,10 +40,14 @@ function fetchUsers() {
     .then((data) => {
       data.users.forEach((user) => createUserCard(user));
     })
+
     .catch((error) => {
-      // TODO: add logic to handle errors (e.g. display error message)
+      console.error('Failed fetching users', error);
+      statusContainer.classList.remove('hidden');
+      status.textContent = 'Failed fetching users';
     });
 }
+
 
 function createUserCard(user) {
   const card = document.createElement('div');
@@ -99,12 +103,11 @@ function deleteUser(userId, card) {
     })
     .then(() => {
       card.classList.add('hidden');
-      statusContainer.classList.remove('status-alert'); // Kırmızı rengi kaldır
-      statusContainer.classList.add('status-success'); // Yeşil rengi ekle
-      statusSuccess.classList.remove('hidden');
+      statusContainer.classList.remove('status-alert'); // Remove red
+      statusContainer.classList.add('status-success'); // Add green
+      statusContainer.classList.remove('hidden');
       status.textContent = `Successfully deleted user ${userId}`;
-      // Show notification in the HTML that the user was deleted (and which user was deleted)
-      // Remove the user card or change it's appearance so it's easy to understand that this user was deleted
+      
     })
     .catch((error) => {
       console.error(`Failed deleting user ${userId}`, error);

@@ -85,24 +85,23 @@ ul {
 }
 .status-success {
   background-color:  #4CAF50;
-  color: #ffffff;
-  border: 1px solid #f5c6cb;
-  border-radius: 5px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
 }
 
-.status-alert {
-  background-color:  #7a0916;
-  color: #ffffff;
+.status-message {
+color: #ffffff;
   border: 1px solid #f5c6cb;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+
+
+
+
+}
+.status-alert {
+  background-color:  #7a0916;
 }
 
 .hidden {
