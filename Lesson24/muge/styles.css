@@ -1,0 +1,226 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.ctas {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 10px;
+}
+
+.card-body {
+  color: #666;
+  margin: 0;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #2b2929;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.button--success {
+  background-color: #4caf50;
+}
+
+.button--success:hover {
+  background-color: #37833b;
+}
+
+.button--danger {
+  background-color: #7a0916;
+}
+
+.button--danger:hover {
+  background-color: #420309f4;
+}
+
+.hidden {
+  display: none;
+}
+
+/* --- MODERN BİLDİRİM (TOAST) STİLLERİ --- */
+
+#statusContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 280px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  /* Kayarak gelme animasyonu için */
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Gizli olduğunda ekranın sağına dışarı itilir */
+#statusContainer.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(120%); /* Ekranın sağına saklar */
+  display: flex; /* Animasyonun bozulmaması için */
+}
+
+.status--success {
+  background-color: #4caf50;
+  color: white;
+  border-left: 6px solid #2e7d32;
+}
+
+.status--error {
+  background-color: #f44336;
+  color: white;
+  border-left: 6px solid #b71c1c;
+}
+
+#status {
+  margin: 0;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+#statusContainer button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 5px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+#statusContainer button:hover {
+  opacity: 1;
+}
+
+/* Update ve Create için Form */
+form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 40px auto;
+}
+
+form label {
+  font-weight: bold;
+  color: #333;
+}
+
+form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+}
+
+/* Inputa tıklandığında (odaklanıldığında) çerçeve rengi değişsin */
+form input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+form button {
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+form button:hover {
+  background-color: #37833b;
+}
+
+/* Yükleniyor (Spinner) */
+.loader {
+  border: 5px solid #e0e0e0;
+  border-top: 5px solid #4caf50;
+  border-radius: 50%; /* Tam yuvarlak yapar */
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite; /* Animasyonu sonsuza kadar çalıştırır */
+  margin: 40px auto;
+}
+
+/* Dönme Animasyonu Kuralları */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
