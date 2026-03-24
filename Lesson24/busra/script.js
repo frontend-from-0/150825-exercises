@@ -16,12 +16,22 @@ HTTP status codes are three-digit numbers that the server sends in response to a
 
 // API to use in the lesson: https://dummyjson.com/docs/users
 
-const usersContainer = document.getElementById("users");
+// VARIABLE
+
+const getUsersButton = document.getElementById("getUsersButton");
 const statusContainer = document.getElementById("statusContainer");
 const status = document.getElementById("status");
 const deleteContainer = document.getElementById("deleteContainer");
+const closeButton = document.getElementById("close");
+const usersContainer = document.getElementById("users");
 
-document.getElementById("getUsersButton").addEventListener("click", fetchUsers);
+// EVENT LISTENER
+
+getUsersButton.addEventListener("click", fetchUsers);
+
+closeButton.addEventListener("click", closeNotification);
+
+// FUNCTİON
 
 function fetchUsers() {
   fetch("https://dummyjson.com/users")
@@ -80,6 +90,20 @@ function createUserCard(user) {
   usersContainer.appendChild(card);
 }
 
+function closeNotification() {
+  deleteContainer.classList.add("hidden");
+}
+
+function deleteUserCard(user, card) {
+  if (card) {
+    card.remove();
+  }
+  deleteContainer.classList.remove("hidden");
+
+  const deleteMessage = document.getElementById("deleteMessage");
+  deleteMessage.textContent = `User ${user.firstName} ${user.lastName} deleted successfully.`;
+}
+
 function deleteUser(userId, card) {
   fetch(`https://dummyjson.com/users/${userId}`, {
     method: "DELETE",
@@ -92,22 +116,10 @@ function deleteUser(userId, card) {
           ${response.statusText}`,
         );
       }
-
       return response.json();
     })
-    .then((user) => {
-      if (card) {
-        card.remove();
-      }
+    .then((user) => deleteUserCard(user, card))
 
-      const deleteContainer = document.getElementById("deleteContainer");
-      deleteContainer.classList.remove("hidden");
-
-      const deleteMessage = document.getElementById("deleteMessage");
-      deleteMessage.textContent = `User ${user.firstName} ${user.lastName} deleted successfully.`;
-      // Show notification in the HTML that the user was deleted (and which user was deleted)
-      // Remove the user card or change it's appearance so it's easy to understand that this user was deleted
-    })
     .catch((error) => {
       console.error("Error: ", error);
       statusContainer.classList.remove("hidden");

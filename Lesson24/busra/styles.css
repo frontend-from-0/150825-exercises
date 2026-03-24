@@ -63,20 +63,26 @@ ul {
 }
 
 .container-delete {
-  display: flex;
-  gap: 32px;
-  justify-content: space-between;
-  align-items: baseline;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+
   max-width: fit-content;
-  background-color: #63915d;
+  background-color: #669762;
   color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 5px rgb(63, 47, 47);
+  border-radius: 10px;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.6);
+  margin: 0 auto;
+  padding: 40px 60px;
+
+
 }
 
 .button {
   padding: 10px 20px;
-  background-color: #764747;
+  background-color: #8d5050;
   color: white;
   border: none;
   border-radius: 4px;
@@ -86,8 +92,7 @@ ul {
 }
 
 .button:hover {
-  background-color: #522929;
-  color: white;
+  background-color: #5b2121;
 }
 
 .button--success {
@@ -105,12 +110,27 @@ ul {
   opacity: 0.7;
 }
 
-.button--close {
-  border: none;
-  background-color: transparent;
+.button--delete:hover {
+  background-color: #c10a0a;
   color: white;
+}
+
+.button--close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: transparent;
+  background-color: transparent;
+  color: rgb(255, 255, 255);
   font-size: 16px;
   font-weight: 600;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 5px 10px;
+}
+
+.button--close:hover {
+  background-color: #0a57123a;
 }
 
 .button--danger {
