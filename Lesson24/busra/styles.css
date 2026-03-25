@@ -144,3 +144,36 @@ ul {
 .hidden {
   display: none;
 }
+
+form {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+label {
+  font-size: 1em;
+  font-weight: 600;
+  color: #61440aac;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 44px;
+}
+
+.input-field {
+  border: 1px solid #61440a60;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 1em;
+}
+
+
+.form-titel {
+  font-size: 2em;
+  color: #8d5050;
+  margin: 80px;
+}

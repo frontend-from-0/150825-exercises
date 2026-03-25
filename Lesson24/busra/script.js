@@ -53,6 +53,8 @@ function fetchUsers() {
     });
 }
 
+// HELPER FUNCTION
+
 function createUserCard(user) {
   const card = document.createElement("div");
   card.classList.add("card");
@@ -121,8 +123,34 @@ function deleteUser(userId, card) {
     .then((user) => deleteUserCard(user, card))
 
     .catch((error) => {
+      //DÜZENLE
       console.error("Error: ", error);
       statusContainer.classList.remove("hidden");
       status.textContent = `Failed deleting user ${userId}`;
     });
 }
+
+function updateUser(updateField, newValue) {
+  const bodyObject = {};
+
+  bodyObject.updateField = newValue;
+
+  fetch(`https://dummyjson.com/users/${userId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(bodyObject),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(
+          `Failed updating user ${userId},
+          ${response.status},
+          ${response.statusText}`,
+        );
+      }
+      return response.json();
+    })
+    .then((user) => deleteUserCard(user, card));
+}
+
+//event.preventDefault();
