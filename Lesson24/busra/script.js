@@ -18,8 +18,11 @@ HTTP status codes are three-digit numbers that the server sends in response to a
 
 // VARIABLE
 
+const urlParams = new URLSearchParams(window.location.search);
+const userId = urlParams.get("userId");
+
 const onlyLettersPattern = /^[a-zA-Z\s-]+$/;
-const numberPattern = /^[0-9]{1,3}$/;
+const numberPattern = /^\d+$/;
 
 const getUsersButton = document.getElementById("getUsersButton");
 
@@ -27,6 +30,7 @@ const usersContainer = document.getElementById("users");
 const statusContainer = document.getElementById("statusContainer");
 const status = document.getElementById("status");
 const deleteContainer = document.getElementById("deleteContainer");
+const updateContainer = document.getElementById("updateContainer");
 const closeButton = document.getElementById("close");
 
 const updateForm = document.getElementById("updateForm");
@@ -39,25 +43,31 @@ const ageError = document.getElementById("ageError");
 
 // EVENT LISTENER
 
-getUsersButton?.addEventListener("click", fetchUsers);
-
-closeButton?.addEventListener("click", closeNotification);
-
-firstNameInput.addEventListener("blur", () =>
-  validateName(firstNameInput, firstNameError),
-);
-lastNameInput.addEventListener("blur", () =>
-  validateName(lastNameInput, lastNameError),
-);
-
-ageInput.addEventListener("blur", validateAge);
-
-updateForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  validateName(firstNameInput, firstNameError);
-  validateName(lastNameInput, lastNameError);
-  validateAge();
+document.addEventListener("DOMContentLoaded", () => {
+  if (getUsersButton) {
+    getUsersButton.addEventListener("click", fetchUsers);
+  }
+  if (userId) {
+    dataUser(userId);
+  }
+  if (updateForm) {
+    updateForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      updateUser(e, userId);
+    });
+  }
+  if (firstNameInput && lastNameInput && ageInput) {
+    firstNameInput.addEventListener("blur", () =>
+      validateName(firstNameInput, firstNameError),
+    );
+    lastNameInput.addEventListener("blur", () =>
+      validateName(lastNameInput, lastNameError),
+    );
+    ageInput.addEventListener("blur", validateAge);
+  }
+  if (closeButton) {
+    closeButton.addEventListener("click", closeNotification);
+  }
 });
 
 // FUNCTİON
@@ -82,7 +92,7 @@ function fetchUsers() {
     });
 }
 
-// HELPER FUNCTION
+//FUNCTION
 
 function createUserCard(user) {
   const card = document.createElement("div");
@@ -90,11 +100,11 @@ function createUserCard(user) {
 
   const cardTitle = document.createElement("h2");
   cardTitle.classList.add("card-title");
-  cardTitle.textContent = user.firstName + " " + user.lastName;
+  cardTitle.textContent = `${user.firstName} ${user.lastName}`;
 
   const cardBody = document.createElement("p");
   cardBody.classList.add("card-body");
-  cardBody.textContent = "Age: " + user.age;
+  cardBody.textContent = `Age: ${user.age}`;
 
   const cardCtas = document.createElement("div");
   cardCtas.classList.add("card-ctas");
@@ -103,6 +113,8 @@ function createUserCard(user) {
   updateButton.classList.add("button");
   updateButton.textContent = "Update user";
   updateButton.href = `./update/index.html?userId=${user.id}`;
+
+  updateButton.addEventListener("click", () => dataUser(userId));
 
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("button", "button--delete");
@@ -122,7 +134,12 @@ function createUserCard(user) {
 }
 
 function closeNotification() {
-  deleteContainer.classList.add("hidden");
+  if (deleteContainer) {
+    deleteContainer.classList.add("hidden");
+  }
+  if (updateContainer) {
+    updateContainer.classList.add("hidden");
+  }
 }
 
 function validateName(input, errorField) {
@@ -138,12 +155,16 @@ function validateName(input, errorField) {
 }
 
 function validateAge() {
-  if (numberPattern.test(ageInput.value.trim())) {
-    ageError.textContent = "";
-    ageInput.removeAttribute("aria-invalid");
-  } else {
-    ageError.textContent = "Please enter your age in digits.";
+  ageError.textContent = "";
+
+  const age = ageInput.value.trim();
+
+  if (parseInt(age) > 99) {
+    ageError.textContent = "Please enter a valid age.";
     ageInput.setAttribute("aria-invalid", "true");
+  } else if (!numberPattern.test(age)) {
+    ageError.textContent = "Please enter your age in digits.";
+    ageInput.removeAttribute("aria-invalid");
   }
 }
 
@@ -181,24 +202,67 @@ function deleteUser(userId, card) {
     });
 }
 
-function updateUser(updateField, newValue) {
-  const bodyObject = {};
+function updateUserCard(user) {
+  updateContainer.classList.remove("hidden");
 
-  bodyObject.updateField = newValue;
+  const updateMessage = document.getElementById("updateMessage");
+  updateMessage.textContent = `User updated successfully.`;
+}
+
+function dataUser(userId) {
+  fetch(`https://dummyjson.com/users/${userId}`, {
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((user) => {
+      firstNameInput.value = user.firstName;
+      lastNameInput.value = user.lastName;
+      ageInput.value = user.age;
+    })
+    .catch((err) => console.error("Fetch hatası:", err));
+}
+
+function updateUser(e, userId) {
+  e.preventDefault();
+
+  if (!firstNameInput.value || !lastNameInput.value || !ageInput.value) {
+    updateContainer.classList.remove("hidden");
+    updateContainer.style.backgroundColor = "#9c0e0e";
+
+    const updateMessage = document.getElementById("updateMessage");
+    updateMessage.textContent = "Please fill in all fields.";
+    return;
+  }
+
+  const bodyObject = {
+    firstName: firstNameInput.value.trim(),
+    lastName: lastNameInput.value.trim(),
+    age: ageInput.value.trim(),
+  };
 
   fetch(`https://dummyjson.com/users/${userId}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(bodyObject),
-  }).then((response) => {
-    if (!response.ok) {
-      throw new Error(
-        `Failed updating user ${userId},
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(
+          `Failed updating user ${user.id},
           ${response.status},
           ${response.statusText}`,
-      );
-    }
-    return response.json();
-  });
-  //.then((user) => updateUserCard(user, card));
+        );
+      }
+      return response.json();
+    })
+    .then((updatedUser) => {
+      updateUserCard(updatedUser);
+      firstNameInput.value = updatedUser.firstName;
+      lastNameInput.value = updatedUser.lastName;
+      ageInput.value = updatedUser.age;
+    })
+
+    .catch((error) => {
+      console.error("Update hatası:", error);
+    });
 }
