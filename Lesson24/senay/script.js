@@ -22,7 +22,7 @@ const usersContainer = document.getElementById("users");
 const statusContainer = document.getElementById("statusContainer");
 const statusMessage = document.getElementById("status");
 const closeButton = document.getElementById("closeButton");
-closeButton.classList.add("close-button");
+
 closeButton.addEventListener("click", () => {
   console.log("The close button is clicked!");
   statusContainer.classList.add("hidden");
@@ -65,7 +65,7 @@ function createUserCard(user) {
   const img = document.createElement("img");
   img.classList.add("image");
   img.src = user.image;
-  img.alt = user.firstName + " " + user.lastName;
+  img.alt = user.firstName + " " + user.lastName + "'s profile picture";
 
   const cardInfo = document.createElement("div");
   cardInfo.classList.add("card-info");
@@ -76,8 +76,7 @@ function createUserCard(user) {
 
   const cardBody = document.createElement("p");
   cardBody.classList.add("card-body");
-  cardBody.style.whiteSpace = "pre-line";
-  cardBody.style.lineHeight = 2;
+
   cardBody.textContent = "Age: " + user.age + "\n" + "Email: " + user.email;
 
   const cardCtas = document.createElement("div");

@@ -1,10 +1,19 @@
 const createForm = document.getElementById("create-form");
 const loadingMessage = document.getElementById("loadingMessage");
 
+const imageInput = document.getElementById("image");
+const firstNameInput = document.getElementById("firsName");
+const lastNameInput = document.getElementById("lastName");
+const ageInput = document.getElementById("age");
+const emailInput = document.getElementById("email");
+const phoneInput = document.getElementById("phone");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+
 const statusContainer = document.getElementById("statusContainer");
 const statusMessage = document.getElementById("status");
 const closeButton = document.getElementById("closeButton");
-closeButton.classList.add("close-button");
+
 closeButton.addEventListener("click", () => {
   statusContainer.classList.add("hidden");
 });
@@ -14,14 +23,14 @@ createForm.addEventListener("submit", (e) => {
   console.log("Form is sending...");
 
   const newUser = {
-    image: document.getElementById("image").value,
-    firstName: document.getElementById("firstName").value,
-    lastName: document.getElementById("lastName").value,
-    age: document.getElementById("age").value,
-    email: document.getElementById("email").value,
-    phone: document.getElementById("phone").value,
-    username: document.getElementById("username").value,
-    password: document.getElementById("password").value,
+    image: imageInput.value.trim(),
+    firstName: firstNameInput.value.trim(),
+    lastName: lastNameInput.value.trim(),
+    age: ageInput.value.trim(),
+    email: emailInput.value.trim(),
+    phone: phoneInput.value.trim(),
+    username: usernameInput.value.trim(),
+    password: passwordInput.value.trim(),
   };
 
   fetch("https://dummyjson.com/users/add", {
@@ -57,8 +66,3 @@ function showStatus(message, isError = false) {
     statusContainer.classList.add("success-box");
   }
 }
-
-const goBackButton = document.getElementById("goBackButton");
-goBackButton.addEventListener("click", () => {
-  window.location.href = "../index.html";
-});

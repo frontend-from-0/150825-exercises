@@ -1,10 +1,19 @@
 const updateForm = document.getElementById("update-form");
 const loadingMessage = document.getElementById("loadingMessage");
 
+const imageInput = document.getElementById("image");
+const firstNameInput = document.getElementById("firstName");
+const lastNameInput = document.getElementById("lastName");
+const ageInput = document.getElementById("age");
+const emailInput = document.getElementById("email");
+const phoneInput = document.getElementById("phone");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+
 const statusContainer = document.getElementById("statusContainer");
 const statusMessage = document.getElementById("status");
 const closeButton = document.getElementById("closeButton");
-closeButton.classList.add("close-button");
+
 closeButton.addEventListener("click", () => {
   statusContainer.classList.add("hidden");
 });
@@ -21,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function fetchUserDetails(id) {
-  loadingMessage.style.display = "block";
+  loadingMessage.classList.add("display-block");
   updateForm.classList.add("hidden");
 
   fetch(`https://dummyjson.com/users/${userId}`)
@@ -32,22 +41,25 @@ function fetchUserDetails(id) {
       return res.json();
     })
     .then((user) => {
-      document.getElementById("image").value = user.image;
-      document.getElementById("firstName").value = user.firstName;
-      document.getElementById("lastName").value = user.lastName;
-      document.getElementById("age").value = user.age;
-      document.getElementById("email").value = user.email;
-      document.getElementById("phone").value = user.phone;
-      document.getElementById("username").value = user.username;
-      document.getElementById("password").value = user.password;
+      imageInput.value = user.image;
+      firstNameInput.value = user.firstName;
+      lastNameInput.value = user.lastName;
+      ageInput.value = user.age;
+      emailInput.value = user.email;
+      phoneInput.value = user.phone;
+      usernameInput.value = user.username;
+      passwordInput.value = user.password;
 
-      loadingMessage.style.display = "none";
+      loadingMessage.classList.remove("display-block");
+      loadingMessage.classList.add("hidden");
       updateForm.style.display = "flex";
       updateForm.classList.remove("hidden");
     })
     .catch((error) => {
       console.error(error);
-      loadingMessage.style.display = "none";
+      loadingMessage.classList.remove("display-block");
+      loadingMessage.classList.add("hidden");
+
       showStatus(`Error: ${error.message}. Please try again later.`, true);
     });
 }
@@ -57,14 +69,14 @@ updateForm.addEventListener("submit", (e) => {
   console.log("Form is sending...");
 
   const updatedData = {
-    image: document.getElementById("image").value,
-    firstName: document.getElementById("firstName").value,
-    lastName: document.getElementById("lastName").value,
-    age: document.getElementById("age").value,
-    email: document.getElementById("email").value,
-    phone: document.getElementById("phone").value,
-    username: document.getElementById("username").value,
-    password: document.getElementById("password").value,
+    image: imageInput.value.trim(),
+    firstName: firstNameInput.value.trim(),
+    lastName: lastNameInput.value.trim(),
+    age: ageInput.value.trim(),
+    email: emailInput.value.trim(),
+    phone: phoneInput.value.trim(),
+    username: usernameInput.value.trim(),
+    password: passwordInput.value.trim(),
   };
 
   fetch(`https://dummyjson.com/users/${userId}`, {
@@ -105,8 +117,3 @@ function showStatus(message, isError = false) {
     statusContainer.classList.add("success-box");
   }
 }
-
-const goBackButton = document.getElementById("goBackButton");
-goBackButton.addEventListener("click", () => {
-  window.location.href = "../index.html";
-});
