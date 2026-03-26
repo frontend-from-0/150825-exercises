@@ -18,18 +18,47 @@ HTTP status codes are three-digit numbers that the server sends in response to a
 
 // VARIABLE
 
+const onlyLettersPattern = /^[a-zA-Z\s-]+$/;
+const numberPattern = /^[0-9]{1,3}$/;
+
 const getUsersButton = document.getElementById("getUsersButton");
+
+const usersContainer = document.getElementById("users");
 const statusContainer = document.getElementById("statusContainer");
 const status = document.getElementById("status");
 const deleteContainer = document.getElementById("deleteContainer");
 const closeButton = document.getElementById("close");
-const usersContainer = document.getElementById("users");
+
+const updateForm = document.getElementById("updateForm");
+const firstNameInput = document.getElementById("firstname");
+const lastNameInput = document.getElementById("lastname");
+const ageInput = document.getElementById("age");
+const firstNameError = document.getElementById("firstnameError");
+const lastNameError = document.getElementById("lastnameError");
+const ageError = document.getElementById("ageError");
 
 // EVENT LISTENER
 
-getUsersButton.addEventListener("click", fetchUsers);
+getUsersButton?.addEventListener("click", fetchUsers);
 
-closeButton.addEventListener("click", closeNotification);
+closeButton?.addEventListener("click", closeNotification);
+
+firstNameInput.addEventListener("blur", () =>
+  validateName(firstNameInput, firstNameError),
+);
+lastNameInput.addEventListener("blur", () =>
+  validateName(lastNameInput, lastNameError),
+);
+
+ageInput.addEventListener("blur", validateAge);
+
+updateForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  validateName(firstNameInput, firstNameError);
+  validateName(lastNameInput, lastNameError);
+  validateAge();
+});
 
 // FUNCTİON
 
@@ -96,6 +125,28 @@ function closeNotification() {
   deleteContainer.classList.add("hidden");
 }
 
+function validateName(input, errorField) {
+  errorField.textContent = "";
+  if (input.value.trim().length >= 50) {
+    errorField.textContent =
+      "This field should contain less than 50 characters.";
+    input.setAttribute("aria-invalid", "true");
+  } else if (!onlyLettersPattern.test(input.value.trim())) {
+    errorField.textContent = "This field can only contain letters.";
+    input.setAttribute("aria-invalid", "true");
+  }
+}
+
+function validateAge() {
+  if (numberPattern.test(ageInput.value.trim())) {
+    ageError.textContent = "";
+    ageInput.removeAttribute("aria-invalid");
+  } else {
+    ageError.textContent = "Please enter your age in digits.";
+    ageInput.setAttribute("aria-invalid", "true");
+  }
+}
+
 function deleteUserCard(user, card) {
   if (card) {
     card.remove();
@@ -139,18 +190,15 @@ function updateUser(updateField, newValue) {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(bodyObject),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(
-          `Failed updating user ${userId},
+  }).then((response) => {
+    if (!response.ok) {
+      throw new Error(
+        `Failed updating user ${userId},
           ${response.status},
           ${response.statusText}`,
-        );
-      }
-      return response.json();
-    })
-    .then((user) => deleteUserCard(user, card));
+      );
+    }
+    return response.json();
+  });
+  //.then((user) => updateUserCard(user, card));
 }
-
-//event.preventDefault();

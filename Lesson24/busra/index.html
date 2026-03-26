@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,12 +19,14 @@
     <div class="container hidden" id="statusContainer">
       <p id="status"></p>
       <!-- TODO: add close button -->
-      <button class="button--close">X</button>
+      <button class="button--close" aria-label="Close Button">X</button>
     </div>
 
     <div class="container container-delete hidden" id="deleteContainer">
       <p id="deleteMessage"></p>
-      <button class="button--close" id="close">X</button>
+      <button class="button--close" id="close" aria-label="Close Button">
+        X
+      </button>
     </div>
 
     <div class="container" id="users">
@@ -47,6 +49,6 @@
     </div> -->
     </div>
 
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>

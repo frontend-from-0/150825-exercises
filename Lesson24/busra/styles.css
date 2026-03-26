@@ -9,18 +9,6 @@ body {
   background-color: #f2f2f2;
 }
 
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.ctas {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-}
-
 h1 {
   text-align: center;
   color: #333;
@@ -34,6 +22,18 @@ a {
 ul {
   list-style-type: none;
   padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.ctas {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
 }
 
 .card {
@@ -89,6 +89,7 @@ ul {
   font-size: 16px;
   cursor: pointer;
   margin-bottom: 20px;
+
 }
 
 .button:hover {
@@ -145,7 +146,10 @@ ul {
   display: none;
 }
 
-form {
+.update-form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
   max-width: 400px;
   width: 100%;
   margin: 0 auto;
@@ -161,7 +165,13 @@ label {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: 44px;
+}
+
+.input-error {
+  color: #5d121dbb;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
 }
 
 .input-field {

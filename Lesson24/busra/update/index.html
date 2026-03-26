@@ -9,21 +9,24 @@
   <body>
     <main>
       <h1 class="form-titel">Update User</h1>
-      <form method="PUT" class="update-form">
+      <form method="GET" novalidate class="update-form" id="updateForm">
         <div class="input-group">
           <label for="firstname">First Name</label>
-          <input type="text" id="firstname" class="input-field"></input>
+          <input type="text" id="firstname" name="firstname" aria-describedby="firstnameError" class="input-field"></input>
+          <p id="firstnameError" class="input-error" aria-live="polite"></p>
         </div>
 
         <div class="input-group">
           <label for="lastname">Last Name</label>
-          <input type="text" id="firstname" class="input-field"></input>
+          <input type="text" id="lastname" name="lastname" aria-describedby="lastnameError" class="input-field"></input>
+          <p id="lastnameError" class="input-error" aria-live="polite"></p>
         </div>
         <div class="input-group">
           <label for="age">Age</label>
-          <input type="text" id="age" class="input-field"></input>
+          <input type="text" id="age" name="age" aria-describedby="ageError" class="input-field"></input>
+          <p id="ageError" class="input-error" aria-live="polite"></p>
         </div>
-
+        <button type="submit" class="button button--success">Submit</button>
       </form>
     </main>
     <script src="../script.js"></script>
