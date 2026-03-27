@@ -41,6 +41,8 @@ const firstNameError = document.getElementById("firstnameError");
 const lastNameError = document.getElementById("lastnameError");
 const ageError = document.getElementById("ageError");
 
+let formCorrect = true;
+
 // EVENT LISTENER
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -53,10 +55,18 @@ document.addEventListener("DOMContentLoaded", () => {
   if (updateForm) {
     updateForm.addEventListener("submit", (e) => {
       e.preventDefault();
+
+      formCorrect = true;
+
+      validateName(firstNameInput, firstNameError);
+      validateName(lastNameInput, lastNameError);
+      validateAge();
+
+      if (formCorrect === false) {
+        return;
+      }
       updateUser(e, userId);
     });
-  }
-  if (firstNameInput && lastNameInput && ageInput) {
     firstNameInput.addEventListener("blur", () =>
       validateName(firstNameInput, firstNameError),
     );
@@ -65,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
     ageInput.addEventListener("blur", validateAge);
   }
+
   if (closeButton) {
     closeButton.addEventListener("click", closeNotification);
   }
@@ -147,9 +158,12 @@ function validateName(input, errorField) {
   if (input.value.trim().length >= 50) {
     errorField.textContent =
       "This field should contain less than 50 characters.";
+    formCorrect = false;
+
     input.setAttribute("aria-invalid", "true");
   } else if (!onlyLettersPattern.test(input.value.trim())) {
     errorField.textContent = "This field can only contain letters.";
+    formCorrect = false;
     input.setAttribute("aria-invalid", "true");
   }
 }
@@ -161,9 +175,11 @@ function validateAge() {
 
   if (parseInt(age) > 99) {
     ageError.textContent = "Please enter a valid age.";
+    formCorrect = false;
     ageInput.setAttribute("aria-invalid", "true");
   } else if (!numberPattern.test(age)) {
     ageError.textContent = "Please enter your age in digits.";
+    formCorrect = false;
     ageInput.removeAttribute("aria-invalid");
   }
 }
@@ -224,15 +240,6 @@ function dataUser(userId) {
 
 function updateUser(e, userId) {
   e.preventDefault();
-
-  if (!firstNameInput.value || !lastNameInput.value || !ageInput.value) {
-    updateContainer.classList.remove("hidden");
-    updateContainer.style.backgroundColor = "#9c0e0e";
-
-    const updateMessage = document.getElementById("updateMessage");
-    updateMessage.textContent = "Please fill in all fields.";
-    return;
-  }
 
   const bodyObject = {
     firstName: firstNameInput.value.trim(),
