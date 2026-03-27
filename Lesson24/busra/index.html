@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css" />
   </head>
   <body>
-    <div class="container ctas">
+    <div class="container ctas" id="containerCtas">
       <button class="button button--success" id="getUsersButton">
         Get Users
       </button>
@@ -16,20 +16,22 @@
       >
     </div>
     <!-- TODO: style error message -->
-    <div class="container hidden" id="statusContainer">
-      <p id="status"></p>
+    <div class="container container-notification hidden" id="statusContainer">
+      <p id="statusMessage"></p>
       <!-- TODO: add close button -->
-      <button class="button--close" aria-label="Close Button">X</button>
+      <button class="button--close" id="closeError" aria-label="Close Button">
+        X
+      </button>
     </div>
 
-    <div class="container container-notification hidden" id="deleteContainer">
+    <div class="container container-notification hidden" id="deleteNotice">
       <p id="deleteMessage"></p>
       <button class="button--close" id="close" aria-label="Close Button">
         X
       </button>
     </div>
 
-    <div class="container" id="users">
+    <div class="container" id="usersContainer">
       <!--
       Fetch all users and display them on the page.
       For every user, add a button to update the user and delete a user.

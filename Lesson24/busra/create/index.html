@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Update User</title>
+    <title>Create User</title>
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
     <main>
-      <h1 class="form-titel">Update User</h1>
-      <form novalidate class="update-form" id="updateForm">
+      <h1 class="form-titel">Create User</h1>
+      <form novalidate class="form" id="createForm">
         <div class="input-group">
           <label for="firstname">First Name</label>
           <input type="text" id="firstname" name="firstname" aria-describedby="firstnameError" class="input-field" required></input>
@@ -28,8 +28,15 @@
         </div>
         <button type="submit" class="button button--success">Submit</button>
       </form>
-      <div class="container container-notification hidden" id="updateContainer">
-        <p id="updateMessage" ></p>
+      <div class="container container-notification hidden" id="statusContainer">
+        <p id="statusMessage"></p>
+  
+        <button class="button--close" id="closeError" aria-label="Close Button">
+        X
+        </button>
+      </div>
+      <div class="container container-notification hidden" id="createNotice">
+        <p id="createMessage" ></p>
         <button class="button--close" id="close" aria-label="Close Button">
         X
       </button>

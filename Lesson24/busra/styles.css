@@ -24,10 +24,31 @@ ul {
   padding: 0;
 }
 
+label {
+  font-size: 1em;
+  font-weight: 600;
+  color: #61440aac;
+}
+
 .container {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+}
+
+.container-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  max-width: fit-content;
+  background-color: #669762;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.6);
+  margin: 0 auto;
+  padding: 20px 60px;
 }
 
 .ctas {
@@ -62,23 +83,6 @@ ul {
   margin-top: 20px;
 }
 
-.container-notification {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-
-  max-width: fit-content;
-  background-color: #669762;
-  color: white;
-  border-radius: 10px;
-  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.6);
-  margin: 0 auto;
-  padding: 20px 60px;
-
-}
-
 .button {
   padding: 10px 20px;
   background-color: #8d5050;
@@ -88,7 +92,6 @@ ul {
   font-size: 16px;
   cursor: pointer;
   margin-bottom: 20px;
-
 }
 
 .button:hover {
@@ -102,7 +105,6 @@ ul {
 .button--success:hover {
   background-color: #7a7642;
 }
-
 
 .button--delete {
   background-color: #b495958b;
@@ -133,19 +135,13 @@ ul {
   background-color: #0a57123a;
 }
 
-.button--danger {
-  background-color: #7a0916;
+.form-titel {
+  font-size: 2em;
+  color: #8d5050;
+  margin: 80px;
 }
 
-.button--danger:hover {
-  background-color: #79000cf4;
-}
-
-.hidden {
-  display: none;
-}
-
-.update-form {
+.form {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -154,23 +150,10 @@ ul {
   margin: 0 auto;
 }
 
-label {
-  font-size: 1em;
-  font-weight: 600;
-  color: #61440aac;
-}
-
 .input-group {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-.input-error {
-  color: #5d121dbb;
-  font-size: 12px;
-  font-weight: 600;
-  margin: 0;
 }
 
 .input-field {
@@ -180,9 +163,13 @@ label {
   font-size: 1em;
 }
 
+.input-error {
+  color: #5d121dbb;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+}
 
-.form-titel {
-  font-size: 2em;
-  color: #8d5050;
-  margin: 80px;
+.hidden {
+  display: none;
 }

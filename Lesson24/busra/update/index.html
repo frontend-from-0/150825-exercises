@@ -9,7 +9,7 @@
   <body>
     <main>
       <h1 class="form-titel">Update User</h1>
-      <form novalidate class="update-form" id="updateForm">
+      <form novalidate class="form" id="updateForm">
         <div class="input-group">
           <label for="firstname">First Name</label>
           <input type="text" id="firstname" name="firstname" aria-describedby="firstnameError" class="input-field" required></input>
@@ -28,7 +28,14 @@
         </div>
         <button type="submit" class="button button--success">Submit</button>
       </form>
-      <div class="container container-notification hidden" id="updateContainer">
+      <div class="container container-notification hidden" id="statusContainer">
+        <p id="statusMessage"></p>
+  
+        <button class="button--close" id="closeError" aria-label="Close Button">
+        X
+        </button>
+      </div>
+      <div class="container container-notification hidden" id="updateNotice">
         <p id="updateMessage" ></p>
         <button class="button--close" id="close" aria-label="Close Button">
         X

@@ -16,7 +16,7 @@ HTTP status codes are three-digit numbers that the server sends in response to a
 
 // API to use in the lesson: https://dummyjson.com/docs/users
 
-// VARIABLE
+// VARIABLES
 
 const urlParams = new URLSearchParams(window.location.search);
 const userId = urlParams.get("userId");
@@ -25,13 +25,12 @@ const onlyLettersPattern = /^[a-zA-Z\s-]+$/;
 const numberPattern = /^\d+$/;
 
 const getUsersButton = document.getElementById("getUsersButton");
-
-const usersContainer = document.getElementById("users");
 const statusContainer = document.getElementById("statusContainer");
-const status = document.getElementById("status");
-const deleteContainer = document.getElementById("deleteContainer");
-const updateContainer = document.getElementById("updateContainer");
+const statusMessage = document.getElementById("statusMessage");
+const closeError = document.getElementById("closeError");
+const deleteNotice = document.getElementById("deleteNotice");
 const closeButton = document.getElementById("close");
+const usersContainer = document.getElementById("usersContainer");
 
 const updateForm = document.getElementById("updateForm");
 const firstNameInput = document.getElementById("firstname");
@@ -40,10 +39,14 @@ const ageInput = document.getElementById("age");
 const firstNameError = document.getElementById("firstnameError");
 const lastNameError = document.getElementById("lastnameError");
 const ageError = document.getElementById("ageError");
+const updateNotice = document.getElementById("updateNotice");
+
+const createForm = document.getElementById("createForm");
+const createNotice = document.getElementById("createNotice");
 
 let formCorrect = true;
 
-// EVENT LISTENER
+// EVENT LISTENERS
 
 document.addEventListener("DOMContentLoaded", () => {
   if (getUsersButton) {
@@ -76,12 +79,124 @@ document.addEventListener("DOMContentLoaded", () => {
     ageInput.addEventListener("blur", validateAge);
   }
 
+  if (createForm) {
+    createForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      formCorrect = true;
+
+      validateName(firstNameInput, firstNameError);
+      validateName(lastNameInput, lastNameError);
+      validateAge();
+
+      if (formCorrect === false) {
+        return;
+      }
+      createUser(e);
+    });
+    firstNameInput.addEventListener("blur", () =>
+      validateName(firstNameInput, firstNameError),
+    );
+    lastNameInput.addEventListener("blur", () =>
+      validateName(lastNameInput, lastNameError),
+    );
+    ageInput.addEventListener("blur", validateAge);
+  }
+
   if (closeButton) {
     closeButton.addEventListener("click", closeNotification);
   }
+
+  if (closeError) {
+    closeError.addEventListener("click", closeNotification);
+  }
 });
 
-// FUNCTİON
+// FUNCTIONS
+
+function validateName(input, errorField) {
+  if (input.value.trim().length >= 50) {
+    errorField.textContent =
+      "This field should contain less than 50 characters.";
+    formCorrect = false;
+    input.setAttribute("aria-invalid", "true");
+  } else if (!onlyLettersPattern.test(input.value.trim())) {
+    errorField.textContent = "This field can only contain letters.";
+    formCorrect = false;
+    input.setAttribute("aria-invalid", "true");
+  } else {
+    errorField.textContent = "";
+    input.removeAttribute("aria-invalid");
+  }
+}
+
+function validateAge() {
+  const age = ageInput.value.trim();
+
+  if (parseInt(age) > 99) {
+    ageError.textContent = "Please enter a valid age.";
+    formCorrect = false;
+    ageInput.setAttribute("aria-invalid", "true");
+  } else if (!numberPattern.test(age)) {
+    ageError.textContent = "Please enter your age in digits.";
+    formCorrect = false;
+    ageInput.setAttribute("aria-invalid", "true");
+  } else {
+    ageError.textContent = "";
+    ageInput.removeAttribute("aria-invalid");
+  }
+}
+
+function updateSuccess() {
+  updateNotice.classList.remove("hidden");
+
+  const updateMessage = document.getElementById("updateMessage");
+  updateMessage.textContent = `User updated successfully.`;
+}
+
+function createSuccess(user) {
+  createNotice.classList.remove("hidden");
+
+  const createMessage = document.getElementById("createMessage");
+  createMessage.textContent = `User ${user.firstName} ${user.lastName} created successfully.`;
+}
+
+function closeNotification() {
+  if (deleteNotice) {
+    deleteNotice.classList.add("hidden");
+  }
+  if (updateNotice) {
+    updateNotice.classList.add("hidden");
+  }
+  if (createNotice) {
+    createNotice.classList.add("hidden");
+  }
+  if (statusContainer) {
+    statusContainer.classList.add("hidden");
+  }
+}
+
+function statusError(error, message) {
+  statusContainer.classList.remove("hidden");
+  statusMessage.textContent = message;
+
+  statusContainer.style.backgroundColor = "#9d2929";
+}
+
+function dataUser(userId) {
+  fetch(`https://dummyjson.com/users/${userId}`, {
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((user) => {
+      firstNameInput.value = user.firstName;
+      lastNameInput.value = user.lastName;
+      ageInput.value = user.age;
+    })
+    .catch((error) =>
+      statusError(error, `System Error: Unable to fetch user ${userId} data.`),
+    );
+}
 
 function fetchUsers() {
   fetch("https://dummyjson.com/users")
@@ -98,12 +213,10 @@ function fetchUsers() {
     .then((data) => {
       data.users.forEach((user) => createUserCard(user));
     })
-    .catch((error) => {
-      // TODO: add logic to handle errors (e.g. display error message)
-    });
+    .catch((error) =>
+      statusError(error, `System Error: Unable to fetch users data.`),
+    );
 }
-
-//FUNCTION
 
 function createUserCard(user) {
   const card = document.createElement("div");
@@ -144,51 +257,11 @@ function createUserCard(user) {
   usersContainer.appendChild(card);
 }
 
-function closeNotification() {
-  if (deleteContainer) {
-    deleteContainer.classList.add("hidden");
-  }
-  if (updateContainer) {
-    updateContainer.classList.add("hidden");
-  }
-}
-
-function validateName(input, errorField) {
-  errorField.textContent = "";
-  if (input.value.trim().length >= 50) {
-    errorField.textContent =
-      "This field should contain less than 50 characters.";
-    formCorrect = false;
-
-    input.setAttribute("aria-invalid", "true");
-  } else if (!onlyLettersPattern.test(input.value.trim())) {
-    errorField.textContent = "This field can only contain letters.";
-    formCorrect = false;
-    input.setAttribute("aria-invalid", "true");
-  }
-}
-
-function validateAge() {
-  ageError.textContent = "";
-
-  const age = ageInput.value.trim();
-
-  if (parseInt(age) > 99) {
-    ageError.textContent = "Please enter a valid age.";
-    formCorrect = false;
-    ageInput.setAttribute("aria-invalid", "true");
-  } else if (!numberPattern.test(age)) {
-    ageError.textContent = "Please enter your age in digits.";
-    formCorrect = false;
-    ageInput.removeAttribute("aria-invalid");
-  }
-}
-
 function deleteUserCard(user, card) {
   if (card) {
     card.remove();
   }
-  deleteContainer.classList.remove("hidden");
+  deleteNotice.classList.remove("hidden");
 
   const deleteMessage = document.getElementById("deleteMessage");
   deleteMessage.textContent = `User ${user.firstName} ${user.lastName} deleted successfully.`;
@@ -210,32 +283,9 @@ function deleteUser(userId, card) {
     })
     .then((user) => deleteUserCard(user, card))
 
-    .catch((error) => {
-      //DÜZENLE
-      console.error("Error: ", error);
-      statusContainer.classList.remove("hidden");
-      status.textContent = `Failed deleting user ${userId}`;
-    });
-}
-
-function updateUserCard(user) {
-  updateContainer.classList.remove("hidden");
-
-  const updateMessage = document.getElementById("updateMessage");
-  updateMessage.textContent = `User updated successfully.`;
-}
-
-function dataUser(userId) {
-  fetch(`https://dummyjson.com/users/${userId}`, {
-    method: "GET",
-  })
-    .then((response) => response.json())
-    .then((user) => {
-      firstNameInput.value = user.firstName;
-      lastNameInput.value = user.lastName;
-      ageInput.value = user.age;
-    })
-    .catch((err) => console.error("Fetch hatası:", err));
+    .catch((error) =>
+      statusError(error, `System Error: User ${userId} could not be removed.`),
+    );
 }
 
 function updateUser(e, userId) {
@@ -263,13 +313,43 @@ function updateUser(e, userId) {
       return response.json();
     })
     .then((updatedUser) => {
-      updateUserCard(updatedUser);
       firstNameInput.value = updatedUser.firstName;
       lastNameInput.value = updatedUser.lastName;
       ageInput.value = updatedUser.age;
+      updateSuccess();
     })
 
-    .catch((error) => {
-      console.error("Update hatası:", error);
-    });
+    .catch((error) =>
+      statusError(error, `System Error: User ${userId} could not be updated.`),
+    );
+}
+
+function createUser(e) {
+  e.preventDefault();
+
+  const bodyObject = {
+    firstName: firstNameInput.value.trim(),
+    lastName: lastNameInput.value.trim(),
+    age: ageInput.value.trim(),
+  };
+
+  fetch("https://dummyjson.com/users/add", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(bodyObject),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(
+          `Failed creating user,
+          ${response.status},
+          ${response.statusText}`,
+        );
+      }
+      return response.json();
+    })
+    .then((createdUser) => createSuccess(createdUser))
+    .catch((error) =>
+      statusError(error, `System Error: User could not be added.`),
+    );
 }
