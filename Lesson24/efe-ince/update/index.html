@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Update User</h1>
+        <form id="updateForm">
+            <input type="text" id="upFName" placeholder="First Name" required class="card" style="width:100%">
+            <input type="text" id="upLName" placeholder="Last Name" required class="card" style="width:100%">
+            <button type="submit" class="button button--success">Update Information</button>
+            <a href="../index.html" class="button">Back</a>
+        </form>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('userId');
+
+        // Önce kullanıcının mevcut verilerini çekip forma yazalım
+        fetch(`https://dummyjson.com/users/${userId}`)
+            .then(res => res.json())
+            .then(user => {
+                document.getElementById('upFName').value = user.firstName;
+                document.getElementById('upLName').value = user.lastName;
+            });
+
+        // Form gönderilince güncelleme yapalım (PUT)
+        document.getElementById('updateForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            fetch(`https://dummyjson.com/users/${userId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    firstName: document.getElementById('upFName').value,
+                    lastName: document.getElementById('upLName').value
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                alert("User updated successfully!");
+                window.location.href = "../index.html";
+            });
+        });
+    </script>
+</body>
+</html>

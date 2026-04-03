@@ -1,0 +1,50 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f6;
+  text-align: center;
+  padding: 20px;
+}
+
+#fetch-btn {
+  background-color: #4791d0;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 30px;
+  transition: background 0.3s;
+}
+
+#fetch-btn:hover {
+  background-color: #0f5897;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.post-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: left;
+  border-top: 5px solid #4791d0;
+}
+
+.post-card h3 {
+  color: #333;
+  margin-top: 0;
+  text-transform: capitalize;
+}
+
+.post-card p {
+  color: #666;
+  line-height: 1.6;
+}
