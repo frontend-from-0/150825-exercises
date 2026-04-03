@@ -19,6 +19,16 @@ console.log("The total is: ", sum);
 // Find the maximum value in the given array. (Hint: Use -Infinity to compare values to)
 const numbersEx2 = [8, 3, 11, 6, 4];
 
+const maxValue = numbersEx2.reduce((acc, currentValue) => {
+  if (acc < currentValue) {
+    return currentValue;
+  } else {
+    return acc;
+  }
+}, -Infinity);
+
+console.log(maxValue);
+
 // Exercise 3: Explain the code
 // Count the occurrences of each element in the given array and return an object with the counts.
 const elements = ["a", "b", "a", "c", "b", "a"];
@@ -37,6 +47,12 @@ console.log(elementCounts); // Output: { a: 3, b: 2, c: 1 }
 // Exercise 4:
 // Calculate the average of all numbers in the given array.
 const numbersEx4 = [10, 20, 30, 40, 50];
+
+const averageNumbers =
+  numbersEx4.reduce((acc, currentValue) => acc + currentValue) /
+  numbersEx4.length;
+
+console.log(averageNumbers);
 
 // Exercise 5: Explain the code below
 // Count the number of unique elements in the array.
