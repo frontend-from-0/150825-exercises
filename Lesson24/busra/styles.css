@@ -51,6 +51,21 @@ label {
   padding: 20px 60px;
 }
 
+.container-error {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  max-width: fit-content;
+  background-color: #9d2929;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.6);
+  margin: 0 auto;
+  padding: 20px 60px;
+}
+
 .ctas {
   display: flex;
   gap: 30px;
@@ -133,6 +148,27 @@ label {
 
 .button--close:hover {
   background-color: #0a57123a;
+}
+
+.back-button {
+
+  border: none;
+  font-size: 1.2rem;
+  background-color: #8d5050b1;
+  color: rgb(255, 255, 255);
+  border-radius: 50px;
+  padding: 5px 20px;
+  margin-left: 60px;
+  margin-top: 40px;
+}
+
+.back-button:hover {
+  background-color: #810616bd;
+}
+
+.back-icon {
+  font-size: 1.2rem;
+  padding-right: 10px;
 }
 
 .form-titel {
