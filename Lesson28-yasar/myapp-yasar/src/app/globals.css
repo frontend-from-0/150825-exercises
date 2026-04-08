@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+body {
+  background-color: #ffffff; /* Her zaman beyaz arka plan */
+  color: black;              /* Her zaman siyah yazı */
+  font-weight: bold;         /* Her zaman kalın yazı */
+  font-family: Arial, sans-serif; /* Her zaman Arial fontu */
+}
