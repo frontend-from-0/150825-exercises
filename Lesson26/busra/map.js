@@ -107,8 +107,8 @@ const wordsExercise4 = [
   "island",
   "jungle",
 ];
-const wordLength = wordsExercise4.map((word) => word.length);
-console.log(wordLength);
+const wordLengths = wordsExercise4.map((word) => word.length);
+console.log(wordLengths);
 
 // Exercise 5:
 // Given an array of student objects with their names and grades, extract an array of only the student names and grade using .map(). E.g. ['Alice A', ...]
