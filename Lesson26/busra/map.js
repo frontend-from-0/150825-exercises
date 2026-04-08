@@ -175,10 +175,10 @@ const studentsExercise5 = [
   },
 ];
 
-const studentNameGrade = studentsExercise5.map(
+const studentNamesAndGrades = studentsExercise5.map(
   (student) => student.name + " " + student.grade,
 );
-console.log(studentNameGrade);
+console.log(studentNamesAndGrades);
 
 // Exercise 6:
 // Given an array of numbers, convert each number to a string representation using .map().
