@@ -187,11 +187,11 @@ const sentencesExercise5 = [
   "The butterfly gracefully fluttered its wings, showcasing vibrant colors in a delicate dance.",
 ];
 
-const lessThanTenWords = sentencesExercise5.filter(
+const shortSentences = sentencesExercise5.filter(
   (sentence) => sentence.split(" ").length <= 10,
 );
 
-console.log(lessThanTenWords);
+console.log(shortSentences);
 
 // Exercise 6:
 // Given an array of products, filter out the products that are out of stock (where the quantity is 0).
