@@ -38,7 +38,7 @@ cvvInput.addEventListener('blur', validateCVV);
 
 function validateEmail() {
   if (emailPattern.test(emailInput.value)) {
-    emailError.innerText = '';
+    emailError.textContent = '';
   } else {
     emailError.innerText =
       'Please enter correct email address (e.g. john@gmail.com)';
