@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    // Select increment / decrement buttons for every product and add event listeners to them
+ 
   }
 
   totalPriceElement.textContent = totalPrice;
