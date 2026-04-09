@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update User</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1 class="form-titel">Update User</h1>
+      a href="../index.html" class="back-button">
+        <span class="back-icon"><</span> Back</a
+      >
+      <form novalidate class="form" id="updateForm">
+        <div class="input-group">
+          <label for="firstname">First Name</label>
+          <input
+            type="text"
+            id="firstname"
+            name="firstname"
+            aria-describedby="firstnameError"
+            class="input-field"
+            required
+          />
+          <p id="firstnameError" class="input-error" aria-live="polite"></p>
+        </div>
+
+        <div class="input-group">
+          <label for="lastname">Last Name</label>
+          <input
+            type="text"
+            id="lastname"
+            name="lastname"
+            aria-describedby="lastnameError"
+            class="input-field"
+            required
+          />
+          <p id="lastnameError" class="input-error" aria-live="polite"></p>
+        </div>
+        <div class="input-group">
+          <label for="age">Age</label>
+          <input
+            type="text"
+            id="age"
+            name="age"
+            aria-describedby="ageError"
+            class="input-field"
+            required
+          />
+          <p id="ageError" class="input-error" aria-live="polite"></p>
+        </div>
+        <button type="submit" class="button button--success">Submit</button>
+      </form>
+      <div class="container container-error hidden" id="statusContainer">
+        <p id="statusMessage"></p>
+
+        <button class="button--close" id="closeError" aria-label="Close Button">
+          X
+        </button>
+      </div>
+      <div class="container container-notification hidden" id="updateNotice">
+        <p id="updateMessage"></p>
+        <button class="button--close" id="close" aria-label="Close Button">
+          X
+        </button>
+      </div>
+    </main>
+    <script src="./update.js"></script>
+  </body>
+</html>

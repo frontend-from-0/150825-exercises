@@ -1,9 +1,15 @@
+const cvvPattern = /^\d{3}$/;
+const cardNumberInput = document.getElementById('cardnumber');
+const cardNumberError = document.getElementById('cardnumberError');
+const expDateInput = document.getElementById('expDate');
+const expDateError = document.getElementById('expDateError');
+const cvvInput = document.getElementById('cvv');
+const cvvError = document.getElementById('cvvError');
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const phonePattern = /^\+?\d(?:\s?\d){9,19}$/;
 const onlyLettersPattern = /^[a-zA-Z\s-]+$/;
 const cardPattern = /^(\d{4}\s){3}\d{4}$/;
 const expDatePattern = /^(0[1-9]|1[0-2])\/\d{2}$/;
-const cvvPattern = /^\d{3,4}$/;
 
 
 const formElement = document.getElementById('checkoutForm');
@@ -15,15 +21,11 @@ const firstNameInput = document.getElementById('firstname');
 const firstNameError = document.getElementById('firstnameError');
 const lastNameInput = document.getElementById('lastname');
 const lastNameError = document.getElementById('lastnameError');
-const cardInput = document.getElementById('cardnumber');
-const cardError = document.getElementById('cardError');
-const expInput = document.getElementById('expDate');
-const expError = document.getElementById('expError');
-const cvvInput = document.getElementById('cvv');
-const cvvError = document.getElementById('cvvError');
 
 let formCorrect = true;
-
+cardNumberInput.addEventListener('blur', validateCard);
+expDateInput.addEventListener('blur', validateExpDate);
+cvvInput.addEventListener('blur', validateCVV);
 emailInput.addEventListener('blur', validateEmail);
 phoneInput.addEventListener('blur', validatePhone);
 firstNameInput.addEventListener('blur', () =>
@@ -32,13 +34,10 @@ firstNameInput.addEventListener('blur', () =>
 lastNameInput.addEventListener('blur', () =>
   validateName(lastNameInput, lastNameError),
 );
-cardInput.addEventListener('blur', validateCard);
-expInput.addEventListener('blur', validateExp);
-cvvInput.addEventListener('blur', validateCVV);
 
 function validateEmail() {
   if (emailPattern.test(emailInput.value)) {
-
+    emailError.innerText = '';
   } else {
     emailError.innerText =
       'Please enter correct email address (e.g. john@gmail.com)';
@@ -71,19 +70,19 @@ function validateName(input, errorField) {
 }
 
 function validateCard() {
-  if (cardPattern.test(cardInput.value)) {
-    cardError.innerText = '';
-  } else {
-    cardError.innerText = 'Format must be XXXX XXXX XXXX XXXX';
+  if (cardPattern.test(cardNumberInput.value)) {
+    cardNumberError.innerText = '';
+  }else {
+    cardNumberError.innerText = 'Please enter correct card number (e.g. 1234 5678 9101 1121)';
     formCorrect = false;
   }
 }
 
-function validateExp() {
-  if (expDatePattern.test(expInput.value)) {
-    expError.innerText = '';
+function validateExpDate() {
+  if (expDatePattern.test(expDateInput.value)) {
+    expDateError.innerText = '';
   } else {
-    expError.innerText = 'Format must be MM/YY (e.g., 12/26)';
+    expDateError.innerText = 'Please enter correct expiration date (e.g. MM/YY)';
     formCorrect = false;
   }
 }
@@ -92,25 +91,25 @@ function validateCVV() {
   if (cvvPattern.test(cvvInput.value)) {
     cvvError.innerText = '';
   } else {
-    cvvError.innerText = 'Enter a valid 3 or 4 digit CVV';
+    cvvError.innerText = 'Please enter correct CVV (e.g. 123)';
     formCorrect = false;
   }
 }
-
 formElement.addEventListener('submit', function (event) {
   event.preventDefault();
-
   formCorrect = true;
   validateEmail();
   validatePhone();
   validateName(firstNameInput, firstNameError);
   validateName(lastNameInput, lastNameError);
   validateCard();
-  validateExp();
+  validateExpDate();
   validateCVV();
-
   if (formCorrect) {
-    document.getElementById('success').classList.remove('hidden');
+    const successDiv = document.getElementById('success');
+    successDiv.innerHTML = `<h2>Thank you for your order!</h2>
+    <p>Your order has been placed successfully.</p>`;
+    successDiv.classList.remove('hidden');
     formElement.classList.add('hidden');
   }
 });
