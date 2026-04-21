@@ -4,7 +4,7 @@ const postsContainer = document.querySelector('.posts-container');
 fetch('https://jsonplaceholder.typicode.com/users/1/posts')
   .then((response) => {
     if (!response.ok) {
-      throw new Error(`Failed fetching post by id. Status: ${response.status}, Status text: ${response.statusText}`);
+      throw new Error(`Failed fetching all posts for the user. Status: ${response.status}, Status text: ${response.statusText}`);
     }
     console.log(response);
     return response.json();
