@@ -34,7 +34,7 @@ const people = [
   { name: "Ellen", age: 22 }
 ];
 
-const acendingOrder = [...people].sort((a, b) => a - b)
+const acendingOrder = [...people].sort((a, b) => a.age - b.age);
 console.log(people, acendingOrder);
 
 
