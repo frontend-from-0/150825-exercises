@@ -89,7 +89,7 @@ function createUserCard(user) {
 }
 
 function deleteUser(userId) {
-  fetch(`https://dummyjson.com/usrs/${userId}`, {
+  fetch(`https://dummyjson.com/users/${userId}`, {
     method: 'DELETE',
   })
     .then((res) => {
