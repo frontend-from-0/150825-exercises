@@ -1,5 +1,5 @@
 
-const postsContainer = document.getElementById('posts-container');
+const postsContainer = document.querySelector('.posts-container');
 
 fetch('https://jsonplaceholder.typicode.com/users/1/posts')
   .then((response) => {
