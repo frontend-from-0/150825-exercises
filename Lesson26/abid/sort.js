@@ -43,5 +43,5 @@ console.log(people, acendingOrder);
 // Expected output: ["pen", "book", "paper", "pencil", "notebook"]
 
 const words = ["notebook", "pen", "paper", "book", "pencil"];
-const byLength = [...words].sort((a,b) => a-b);
-console.log(words, byLength);
+const sortByLength = [...words].sort((a, b) => a.length - b.length);
+console.log(words, sortByLength);
