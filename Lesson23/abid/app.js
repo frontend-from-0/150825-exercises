@@ -27,4 +27,4 @@ fetch('https://jsonplaceholder.typicode.com/users/1/posts')
         postsContainer.appendChild(card);
     });
     }) 
-  .catch(error => console.log('Error fetching posts by id!', error));
+  .catch(error => console.error('Error fetching posts:', error));
