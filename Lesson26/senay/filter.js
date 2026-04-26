@@ -189,7 +189,7 @@ const sentencesExercise5 = [
 ];
 
 const sentencesMoreThan10Words = sentencesExercise5.filter(
-  (sentences) => sentences.split(" ").length > 10,
+  (sentence) => sentence.split(" ").length > 10,
 );
 
 console.log("------ ------- ------- ------");
@@ -456,8 +456,8 @@ const usersExercise10 = [
   },
 ];
 
-const userStartsJ = usersExercise10.filter(
-  (user) => user.name.split("")[0].toLowerCase() === "j",
+const userStartsJ = usersExercise10.filter((user) =>
+  user.name.toLowerCase().startsWith("j"),
 );
 
 console.log("------ ------- ------- ------");
