@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>User Management</h1>
+  </header>
+  
+  <main>
+    <div class="container ctas">
+      <button class="button button--success" id="getUsersButton">Get Users</button>
+      <a class="button button--success" href="./create/index.html">Create a new user</a>
+    </div>
+    
+    <div class="container status-message-container hidden" id="statusContainer">
+      <p class="status-message-text" id="status"></p>
+      <button id="closeStatus" class="button button--danger" aria-label="Close message">X</button>
+    </div>
+    
+    <div class="container users-list" id="users">
+      </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
